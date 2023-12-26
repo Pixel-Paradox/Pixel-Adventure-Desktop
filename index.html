@@ -1,0 +1,27 @@
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" type="text/css" href="pagw.css">
+        <link rel="stylesheet" type="text/css" href="menu.css">
+        <script defer src="pagw.js"></script>
+        <script defer src="menu.js"></script>
+        <link rel="icon" href="Pixel-Adventure.ico" type="image/x-icon">
+        <link rel="icon" href="Pixel-Adventure.png" type="image/png">
+        <link rel="icon" type="image/svg+xml" href="Pixel-Adventure.svg">
+        <title>pagw</title>
+    </head>
+
+    <body>
+        <div class="menu">
+            <div class="reprendre btn">Reprendre</div>
+            <div class="size">
+                <input type="number" class="inputSize btn" pattern="[0-9]*" placeholder="Largeur" min="1" max="100">
+                <input type="number" class="inputSize btn" pattern="[0-9]*" placeholder="Hauteur" min="1" max="100">
+            </div>
+            <div class="ecran btn">Plein écran</div>
+        </div>
+
+        <canvas></canvas>
+    </body>
+</html>
