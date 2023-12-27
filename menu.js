@@ -3,21 +3,23 @@ const reprendre = document.querySelector(".reprendre");
 const inputSizes = document.querySelectorAll(".inputSize");
 const ecran = document.querySelector(".ecran");
 
-
 document.addEventListener('keydown', function(event) {
     if (event.keyCode === 81) {
         menu.classList.toggle("active");
     }
 });
 
-reprendre.onclick = function() {
-    menu.classList.remove("active");
-};
-
 inputSizes.forEach((input, index) => {
+    input.maxLength = 3;
+
     input.addEventListener('input', function() {
         let value = parseInt(this.value);
         
+        if (this.value.length > 3) {
+            this.value = this.value.slice(0, 3)
+            value = parseInt(this.value);
+        }
+
         if (value > 100) {
             value = 100;
         }
@@ -41,13 +43,21 @@ window.addEventListener('DOMContentLoaded', function() {
     const storedHeight = localStorage.getItem("canvasHeight");
     
     if (storedWidth) {
+        inputSizes[0].value = storedWidth;
         canvas.style.width = `${storedWidth}vw`;
     }
     
     if (storedHeight) {
+        inputSizes[1].value = storedHeight;
         canvas.style.height = `${storedHeight}vh`;
     }
 });
+
+function limitNumberLength(inputSizes, maxLength) {
+    if (inputSizes.value.length > maxLength) {
+        inputSizes.value = input.value.slice(0, maxLength);
+    }
+}
 
 let pleinEcranActif = false;
 
