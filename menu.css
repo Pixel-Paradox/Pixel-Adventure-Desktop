@@ -21,7 +21,6 @@
 
     visibility: visible; 
     opacity: 1;
-    transition: 2s;
 
 }
 
@@ -42,10 +41,16 @@
     cursor: pointer;
     transition: all 1s;
     box-shadow : 7px 15px 5px rgba(255, 255, 255, 0.1);
-    
+    cursor: none;
 
 }
 
+.menu.active .btn {
+
+    cursor: pointer;
+    
+}
+ 
 .btn:hover {
 
     height: 80px;

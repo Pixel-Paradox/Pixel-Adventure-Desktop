@@ -1,3 +1,5 @@
+const body = document.querySelector("body");
+
 const menu = document.querySelector(".menu");
 const reprendre = document.querySelector(".reprendre");
 const inputSizes = document.querySelectorAll(".inputSize");
@@ -6,11 +8,17 @@ const ecran = document.querySelector(".ecran");
 document.addEventListener('keydown', function(event) {
     if (event.keyCode === 81) {
         menu.classList.toggle("active");
+        if(menu.classList.contains('active')) {
+            body.style.cursor = "default";
+        } else {
+            body.style.cursor = "none";
+        } 
     }
 });
 
 reprendre.onclick = function() {
     menu.classList.remove("active");
+    body.style.cursor = "none";
 };
 
 inputSizes.forEach((input, index) => {
