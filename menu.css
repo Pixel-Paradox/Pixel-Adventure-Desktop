@@ -51,7 +51,7 @@
     
 }
  
-.btn:hover {
+.btn:hover, .inputSize:focus {
 
     height: 80px;
 
@@ -70,8 +70,18 @@
     border: none;
     width: 190px;
     display: flex;
-    outline: none
+    outline: none;
+    text-align: center;
+    appearance: textfield;
 
+}
+
+.inputSize::-webkit-inner-spin-button,
+.inputSize::-webkit-outer-spin-button {
+
+    -webkit-appearance: none;
+    margin: 0;
+    
 }
 
 ::placeholder {

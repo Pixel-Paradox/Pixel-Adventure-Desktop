@@ -54,12 +54,20 @@ window.addEventListener('DOMContentLoaded', function() {
     const storedWidth = localStorage.getItem("canvasWidth");
     const storedHeight = localStorage.getItem("canvasHeight");
     
-    if (storedWidth) {
+    if (!storedWidth) {
+        inputSizes[0].value = 100;
+        canvas.style.width = "100vw";
+        localStorage.setItem("canvasWidth", "100");
+    } else {
         inputSizes[0].value = storedWidth;
         canvas.style.width = `${storedWidth}vw`;
     }
     
-    if (storedHeight) {
+    if (!storedHeight) {
+        inputSizes[1].value = 100;
+        canvas.style.height = "100vh";
+        localStorage.setItem("canvasHeight", "100");
+    } else {
         inputSizes[1].value = storedHeight;
         canvas.style.height = `${storedHeight}vh`;
     }
