@@ -9,6 +9,10 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+reprendre.onclick = function() {
+    menu.classList.remove("active");
+};
+
 inputSizes.forEach((input, index) => {
     input.maxLength = 3;
 
