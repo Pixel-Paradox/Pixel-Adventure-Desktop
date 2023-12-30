@@ -1,6 +1,6 @@
-if (window.location.protocol != "https:") {
+/*if (window.location.protocol != "https:") {
     window.location.protocol="https:";
-}
+}*/
 
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
