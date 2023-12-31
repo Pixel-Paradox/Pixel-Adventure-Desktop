@@ -27,3 +27,7 @@ image.onload = function() {
         newHeight
     );
 };
+
+document.addEventListener("contextmenu", function (event) {
+    event.preventDefault();
+});
