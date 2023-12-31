@@ -89,7 +89,7 @@ ecran.onclick = function() {
     } else {
         exitFullscreen();
         pleinEcranActif = false;
-        ecran.textContent = "plein écran";
+        ecran.textContent = "Plein écran";
     }
 };
 
