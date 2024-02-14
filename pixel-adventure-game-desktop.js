@@ -1,6 +1,6 @@
-if (window.location.protocol != "https:") {
+/*if (window.location.protocol != "https:") {
     window.location.protocol="https:";
-}
+}*/
 
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
@@ -15,7 +15,7 @@ const playerImage = new Image();
 playerImage.src = 'player.png';
 
 image.onload = function() {
-    c.drawImage(image, -100, -200);
+    c.drawImage(image, -50, -200);
     const scale = 10;
     const newWidth = playerImage.width / scale;
     const newHeight = playerImage.height / scale;

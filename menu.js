@@ -5,21 +5,38 @@ const reprendre = document.querySelector(".reprendre");
 const inputSizes = document.querySelectorAll(".inputSize");
 const ecran = document.querySelector(".ecran");
 
-document.addEventListener('keydown', function(event) {
-    if (event.keyCode === 81) {
-        menu.classList.toggle("active");
-        if(menu.classList.contains('active')) {
-            body.style.cursor = "default";
-        } else {
-            body.style.cursor = "none";
-        } 
+document.addEventListener('DOMContentLoaded', function() {
+    // Récupérer l'état du menu depuis le stockage local
+    var menuState = localStorage.getItem('menuState');
+    if (menuState === 'active') {
+        menu.classList.add('active');
+        body.style.cursor = "default";
+    } else {
+        menu.classList.remove('active');
+        body.style.cursor = "none";
     }
+
+    document.addEventListener('keydown', function(event) {
+        if (event.keyCode === 81) {
+            menu.classList.toggle("active");
+
+            // Mettre à jour le stockage local avec le nouvel état du menu
+            var newState = menu.classList.contains('active') ? 'active' : 'inactive';
+            localStorage.setItem('menuState', newState);
+
+            body.style.cursor = menu.classList.contains('active') ? "default" : "none";
+        }
+    });
+
+    reprendre.onclick = function() {
+        menu.classList.remove("active");
+        body.style.cursor = "none";
+
+        // Mettre à jour le stockage local lorsque le menu est fermé
+        localStorage.setItem('menuState', 'inactive');
+    };
 });
 
-reprendre.onclick = function() {
-    menu.classList.remove("active");
-    body.style.cursor = "none";
-};
 
 inputSizes.forEach((input, index) => {
     input.maxLength = 3;
