@@ -8,18 +8,18 @@ document.addEventListener("contextmenu", function (event) {
 
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
-
 const collisionsMap = [];
 for (let i = 0; i < collisions.length; i += 150) {
     collisionsMap.push(collisions.slice(i, 150 + i));
 }
-
+const a = 16;
 class Boundary {
-    static width = 48;
+    static width = a;
+    static height = a;
     constructor({position}) {
         this.position = position;
-        this.width = 48;
-        this.height = 48;
+        this.width = a;
+        this.height = a;
     }
 
     draw() {
@@ -37,7 +37,7 @@ const offset = {
 
 collisionsMap.forEach(function(row, i) {
     row.forEach(function(symbol, j) {
-        if (symbol === 1178) {
+        if (symbol === 797 || symbol === 1175) {
             boundaries.push(new Boundary({position: {
                 x: j * Boundary.width + offset.x,
                 y: i * Boundary.height + offset.y
@@ -86,12 +86,22 @@ const keys = {
     }
 }
 
+const testBoundary = new Boundary({
+    position: {
+        x: 150,
+        y: 120
+    }
+})
+
+const movable = [background, testBoundary]; 
+
 function animate() {
     window.requestAnimationFrame(animate);
     background.draw();
     boundaries.forEach(boundary =>{
         boundary.draw()
     })
+    testBoundary.draw();
     const scale = 10;
     const newWidth = playerImage.width / scale;
     const newHeight = playerImage.height / scale;
@@ -102,10 +112,26 @@ function animate() {
         newWidth, newHeight
     );
 
-    if (keys.w.pressed && lastKey === "w") background.position.y += 2;
-    else if (keys.a.pressed && lastKey === "a") background.position.x += 2;
-    else if (keys.s.pressed && lastKey === "s") background.position.y -= 2;
-    else if (keys.d.pressed && lastKey === "d") background.position.x -= 2;
+    if (keys.w.pressed && lastKey === "w") {
+        movable.forEach((movable) => {
+            movable.position.y += 2;
+        })
+    }
+    else if (keys.a.pressed && lastKey === "a") {
+        movable.forEach((movable) => {
+            movable.position.x += 2;
+        })
+    }
+    else if (keys.s.pressed && lastKey === "s") {
+        movable.forEach((movable) => {
+            movable.position.y -= 2;
+        })
+    }
+    else if (keys.d.pressed && lastKey === "d") {
+        movable.forEach((movable) => {
+            movable.position.x -= 2;
+        })
+    }
 }
 animate()
 
