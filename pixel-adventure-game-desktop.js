@@ -9,8 +9,42 @@ document.addEventListener("contextmenu", function (event) {
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
 
-c.fillStyle = "white";
-c.fillRect(0, 0, canvas.width, canvas.height);
+const collisionsMap = [];
+for (let i = 0; i < collisions.length; i += 150) {
+    collisionsMap.push(collisions.slice(i, 150 + i));
+}
+
+class Boundary {
+    static width = 48;
+    constructor({position}) {
+        this.position = position;
+        this.width = 48;
+        this.height = 48;
+    }
+
+    draw() {
+        c.fillStyle = "red"
+        c.fillRect(this.position.x, this.position.y, this.width, this.height);
+    }
+}
+
+const boundaries = [];
+
+const offset = {
+    x: -50,
+    y: -200
+};
+
+collisionsMap.forEach(function(row, i) {
+    row.forEach(function(symbol, j) {
+        if (symbol === 1178) {
+            boundaries.push(new Boundary({position: {
+                x: j * Boundary.width + offset.x,
+                y: i * Boundary.height + offset.y
+            }}))
+        }
+    });
+});
 
 const image = new Image();
 image.src = 'map.png';
@@ -31,8 +65,8 @@ class Sprite {
 
 const background = new Sprite({
     position: {
-        x: -50,
-        y: -200
+        x: offset.x,
+        y: offset.y
     },
     image: image
 })
@@ -55,6 +89,9 @@ const keys = {
 function animate() {
     window.requestAnimationFrame(animate);
     background.draw();
+    boundaries.forEach(boundary =>{
+        boundary.draw()
+    })
     const scale = 10;
     const newWidth = playerImage.width / scale;
     const newHeight = playerImage.height / scale;
@@ -65,26 +102,32 @@ function animate() {
         newWidth, newHeight
     );
 
-    if (keys.w.pressed) background.position.y += 3;
-    else if (keys.a.pressed) background.position.x += 3;
-    else if (keys.s.pressed) background.position.y -= 3;
-    else if (keys.d.pressed) background.position.x -= 3;
+    if (keys.w.pressed && lastKey === "w") background.position.y += 2;
+    else if (keys.a.pressed && lastKey === "a") background.position.x += 2;
+    else if (keys.s.pressed && lastKey === "s") background.position.y -= 2;
+    else if (keys.d.pressed && lastKey === "d") background.position.x -= 2;
 }
 animate()
+
+let lastKey = "";
 
 window.addEventListener("keydown", function(e) {
     switch (e.key) {
         case "w":
             keys.w.pressed = true;
+            lastKey = "w"
             break;
         case "a":
             keys.a.pressed = true;
+            lastKey = "a";
             break;
         case "s":
             keys.s.pressed = true;
+            lastKey = "s";
             break;
         case "d":
             keys.d.pressed = true;
+            lastKey = "d";
             break;        
     }
 });
@@ -104,5 +147,4 @@ window.addEventListener("keyup", function(e) {
             keys.d.pressed = false;
             break;        
     }
-    console.log(keys);
 });
