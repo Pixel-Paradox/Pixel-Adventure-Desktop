@@ -1,3 +1,11 @@
+/*if (window.location.protocol != "https:") {
+    window.location.protocol="https:";
+}*/
+
+document.addEventListener("contextmenu", function (event) {
+    event.preventDefault();
+});
+
 const body = document.querySelector("body");
 const menu = document.querySelector(".menu");
 const reprendre = document.querySelector(".reprendre");
