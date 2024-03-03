@@ -86,7 +86,7 @@ function rectangularCollision({rectangle1, rectangle2}) {
         rectangle1.position.y + rectangle1.height >= rectangle2.position.y
     )
 }
-
+  
 function animate() {
     window.requestAnimationFrame(animate);
     background.draw();
@@ -233,4 +233,16 @@ window.addEventListener("keyup", function(e) {
             keys.d.pressed = false;
             break;        
     }
+});
+
+window.addEventListener("blur", function() {
+    keys.w.pressed = false;
+    keys.a.pressed = false;
+    keys.s.pressed = false;
+    keys.d.pressed = false;
+    lastKey = "";
+});
+
+window.addEventListener("focus", function() {
+    lastKey = "";
 });
