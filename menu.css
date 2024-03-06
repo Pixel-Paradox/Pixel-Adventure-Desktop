@@ -39,7 +39,7 @@
     font-size: 1.5em;
     cursor: pointer;
     transition: all 1s;
-    box-shadow : 7px 15px 5px rgba(255, 255, 255, 0.217);
+    box-shadow : 8px 12px 5px rgba(255, 255, 255, 0.217);
     cursor: none;
 
 }
