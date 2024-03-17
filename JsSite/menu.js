@@ -1,6 +1,6 @@
-if (window.location.protocol != "https:") {
+/*if (window.location.protocol != "https:") {
     window.location.protocol="https:";
-}
+}*/
 
 document.addEventListener("contextmenu", function (event) {
     event.preventDefault();
@@ -45,8 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('menuState', 'inactive');
     };
 });
-
-
 
 inputSizes.forEach((input, index) => {
     input.maxLength = 3;

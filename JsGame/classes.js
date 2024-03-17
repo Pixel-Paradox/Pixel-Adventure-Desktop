@@ -41,14 +41,15 @@ class Sprite {
     }
 }
 
-const t = 16
+const boundaryWaist = 16
+
 class Boundary {
-    static width = t;
-    static height = t;
+    static width = boundaryWaist;
+    static height = boundaryWaist;
     constructor({position}) {
         this.position = position;
-        this.width = t;
-        this.height = t;
+        this.width = boundaryWaist;
+        this.height = boundaryWaist;
     }
 
     draw() {
