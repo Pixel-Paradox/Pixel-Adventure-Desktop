@@ -15,15 +15,19 @@ function splitArrayIntoChunks(array) {
 }
 
 const mapCollisions = splitArrayIntoChunks(collisionsMap);
-const frontHomeMap = splitArrayIntoChunks(frontHome);
+const homeCollisions = splitArrayIntoChunks(collisionsHome);
 
-const offset = {
+const homeFront = splitArrayIntoChunks(frontHome);
+
+let offset = {
     x: -35,
     y: -35
 };
 
 const mapOfCollisions = [];
-const frontOfHomes = []
+const homeOfCollisions = [];
+
+const frontOfHomes = [];
 
 function createBoundariesFromArray(array, boundaryList) {
     array.forEach(function(row, i) {
@@ -39,34 +43,36 @@ function createBoundariesFromArray(array, boundaryList) {
 }
 
 createBoundariesFromArray(mapCollisions, mapOfCollisions);
-createBoundariesFromArray(frontHomeMap, frontOfHomes);
+createBoundariesFromArray(homeCollisions, homeOfCollisions);
+
+createBoundariesFromArray(homeFront, frontOfHomes);
 
 // Player image
 
 const player1 = new Image();
-player1.src = './ImageGame/player1.png';
+player1.src = './Site/ImageGame/player1.png';
 
 const player2 = new Image();
-player2.src = './ImageGame/player2.png';
+player2.src = './Site/ImageGame/player2.png';
 
 const player3 = new Image();
-player3.src = './ImageGame/player3.png';
+player3.src = './Site/ImageGame/player3.png';
 
 const player4 = new Image();
-player4.src = './ImageGame/player4.png';
+player4.src = './Site/ImageGame/player4.png';
 
 // Map image
 
 const mapBackground = new Image();
-mapBackground.src = './ImageGame/map.png';
+mapBackground.src = './Site/ImageGame/map.png';
 
 const mapForeground = new Image();
-mapForeground.src = './ImageGame/foreground.png';
+mapForeground.src = './Site/ImageGame/foreground.png';
 
 // Houses image 
 
 const homeBackground = new Image();
-homeBackground.src = './ImageGame/home.png';
+homeBackground.src = './Site/ImageGame/home.png';
 
 // Player creation
 
@@ -130,7 +136,7 @@ const keys = {
     }
 }
 
-const movable = [backgroundMap , foregroundMap, ...mapOfCollisions, backgroundHome, ...frontOfHomes];
+const movable = [backgroundMap , foregroundMap, ...mapOfCollisions, ...frontOfHomes, backgroundHome, ...homeOfCollisions];
  
 function rectangularCollision({rectangle1, rectangle2}) {
     return(
@@ -149,14 +155,15 @@ function animate() {
     let moving = true;
 
     if(base === "map") {
+        c.clearRect(0, 0, canvas.width, canvas.height);
         backgroundMap.draw();
         player.draw();
         foregroundMap.draw();
 
         player.moving = false;
 
-        mapOfCollisions.forEach(boundary => {
-            boundary.draw()
+        mapOfCollisions.forEach(mapOfCollision => {
+            mapOfCollision.draw()
         });
 
         frontOfHomes.forEach(frontOfHome => {
@@ -180,6 +187,7 @@ function animate() {
                         })
                     ){
                         moving = false;
+                        player.moving = false;
                         break;
                     }
                 }
@@ -196,6 +204,9 @@ function animate() {
                         })
                     ){
                         base = "home"
+                        movable.forEach((movable) => {
+                            movable.position.y += 30;
+                        })
                         break;
                     }
                 }
@@ -221,6 +232,7 @@ function animate() {
                         })
                     ){
                         moving = false;
+                        player.moving = false;
                         break;
                     }
                 }
@@ -246,6 +258,7 @@ function animate() {
                         })
                     ){
                         moving = false;
+                        player.moving = false;
                         break;
                     }
                 }
@@ -271,6 +284,7 @@ function animate() {
                         })
                     ){
                         moving = false;
+                        player.moving = false;
                         break;
                     }
                 }
@@ -285,15 +299,40 @@ function animate() {
     }
     else if(base = "home") {
         c.clearRect(0, 0, canvas.width, canvas.height);
+
         backgroundHome.draw();
         player.draw();
 
         player.moving = false;
 
+        homeOfCollisions.forEach(homeOfCollision => {
+            homeOfCollision.draw()
+        });
+        frontOfHomes.forEach(frontOfHome => {
+            frontOfHome.draw()
+        });
+
+
         if(menuKeys) {
             if (keys.w.pressed && lastKey === "w") {
                 player.moving = true;
                 player.image = player.sprites.up;
+                for (let i = 0; i < homeOfCollisions.length; i++) {
+                    const boundary = homeOfCollisions[i];
+                    if(
+                        rectangularCollision({
+                            rectangle1: player,
+                            rectangle2: {...boundary, position: {
+                                x: boundary.position.x,
+                                y: boundary.position.y + 2
+                            }}
+                        })
+                    ){
+                        moving = false;
+                        player.moving = false;
+                        break;
+                    }
+                }
                 
                 if(moving) {
                     movable.forEach((movable) => {
@@ -304,7 +343,42 @@ function animate() {
             else if (keys.s.pressed && lastKey === "s") {
                 player.moving = true;
                 player.image = player.sprites.down;
+                for (let i = 0; i < homeOfCollisions.length; i++) {
+                    const boundary = homeOfCollisions[i];
+                    if(
+                        rectangularCollision({
+                            rectangle1: player,
+                            rectangle2: {...boundary, position: {
+                                x: boundary.position.x,
+                                y: boundary.position.y - 2
+                            }}
+                        })
+                    ){
+                        moving = false;
+                        player.moving = false;
+                        break;
+                    }
+                }
                 
+                for (let i = 0; i < frontOfHomes.length; i++) {
+                    const frontOfHome = frontOfHomes[i];
+                    if(
+                        rectangularCollision({
+                            rectangle1: player,
+                            rectangle2: {...frontOfHome, position: {
+                                x: frontOfHome.position.x,
+                                y: frontOfHome.position.y + 2
+                            }}
+                        })
+                    ){
+                        base = "map"
+                        movable.forEach((movable) => {
+                            movable.position.y -= 25;
+                        })
+                        break;
+                    }
+                }
+
                 if(moving) {
                     movable.forEach((movable) => {
                         movable.position.y -= 2;
@@ -314,6 +388,22 @@ function animate() {
             else if (keys.a.pressed && lastKey === "a") {
                 player.moving = true;
                 player.image = player.sprites.left;
+                for (let i = 0; i < homeOfCollisions.length; i++) {
+                    const boundary = homeOfCollisions[i];
+                    if(
+                        rectangularCollision({
+                            rectangle1: player,
+                            rectangle2: {...boundary, position: {
+                                x: boundary.position.x + 2,
+                                y: boundary.position.y
+                            }}
+                        })
+                    ){
+                        moving = false;
+                        player.moving = false;
+                        break;
+                    }
+                }
 
                 if(moving) {
                     movable.forEach((movable) => {
@@ -324,6 +414,22 @@ function animate() {
             else if (keys.d.pressed && lastKey === "d") {
                 player.moving = true;
                 player.image = player.sprites.right;
+                for (let i = 0; i < homeOfCollisions.length; i++) {
+                    const boundary = homeOfCollisions[i];
+                    if(
+                        rectangularCollision({
+                            rectangle1: player,
+                            rectangle2: {...boundary, position: {
+                                x: boundary.position.x - 2,
+                                y: boundary.position.y
+                            }}
+                        })
+                    ){
+                        moving = false;
+                        player.moving = false;
+                        break;
+                    }
+                }
 
                 if(moving) {
                     movable.forEach((movable) => {
