@@ -155,11 +155,11 @@ function animate() {
     let moving = true;
 
     if(base === "map") {
+
         c.clearRect(0, 0, canvas.width, canvas.height);
         backgroundMap.draw();
         player.draw();
         foregroundMap.draw();
-
         player.moving = false;
 
         mapOfCollisions.forEach(mapOfCollision => {
@@ -297,7 +297,7 @@ function animate() {
             }
         }
     }
-    else if(base = "home") {
+    else if(base === "home") {
         c.clearRect(0, 0, canvas.width, canvas.height);
 
         backgroundHome.draw();
