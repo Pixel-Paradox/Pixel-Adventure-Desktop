@@ -14,37 +14,36 @@ const ecran = document.querySelector(".ecran");
 
 let menuKeys = true;
 
-document.addEventListener('DOMContentLoaded', function() {
-    var menuState = localStorage.getItem('menuState');
-    if (menuState === 'active') {
-        menu.classList.add('active');
-        body.style.cursor = "default";
-        menuKeys = false;
-    } else {
-        menu.classList.remove('active');
-        body.style.cursor = "none";
-        menuKeys = true;
-    }
+var menuState = localStorage.getItem('menuState');
+if (menuState === 'active') {
+    menu.classList.add('active');
+    body.style.cursor = "default";
+    menuKeys = false;
+} else {
+    menu.classList.remove('active');
+    body.style.cursor = "none";
+    menuKeys = true;
+}
     
-    document.addEventListener('keydown', function(event) {
-        if (event.keyCode === 81) {
-            menu.classList.toggle("active");
-            menuKeys = !menu.classList.contains('active');
+document.addEventListener('keydown', function(event) {
+    if (event.keyCode === 81) {
+        menu.classList.toggle("active");
+        menuKeys = !menu.classList.contains('active');
 
-            var newState = menu.classList.contains('active') ? 'active' : 'inactive';
-            localStorage.setItem('menuState', newState);
+        var newState = menu.classList.contains('active') ? 'active' : 'inactive';
+        localStorage.setItem('menuState', newState);
 
-            body.style.cursor = menu.classList.contains('active') ? "default" : "none";
-        } 
-    });
-
-    reprendre.onclick = function() {
-        menu.classList.remove("active");
-        body.style.cursor = "none";
-        menuKeys = true;
-        localStorage.setItem('menuState', 'inactive');
-    };
+        body.style.cursor = menu.classList.contains('active') ? "default" : "none";
+    } 
 });
+
+reprendre.onclick = function() {
+    menu.classList.remove("active");
+    body.style.cursor = "none";
+    menuKeys = true;
+    localStorage.setItem('menuState', 'inactive');
+};
+
 
 inputSizes.forEach((input, index) => {
     input.maxLength = 3;

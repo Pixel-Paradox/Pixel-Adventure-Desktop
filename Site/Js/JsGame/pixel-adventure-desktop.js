@@ -4,6 +4,8 @@ const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
 c.imageSmoothingEnabled = true;
 
+const dialogue = document.querySelector(".dialogue");
+
 // Hang Tiled data
 
 function splitArrayIntoChunks(array) {
@@ -61,6 +63,13 @@ player3.src = './Site/ImageGame/player3.png';
 const player4 = new Image();
 player4.src = './Site/ImageGame/player4.png';
 
+// Villager image
+
+const villager1 = new Image();
+villager1.src = './Site/ImageGame/player1.png';
+
+const villager2 = new Image();
+villager2.src = './Site/ImageGame/player1.png';
 // Map image
 
 const mapBackground = new Image();
@@ -92,6 +101,34 @@ const player = new Sprite({
         right: player3,
     }
 })
+
+const Albert = {
+    sprite: new Sprite({
+        position: {
+            x: canvas.width / 2 + 90,
+            y: canvas.height / 2 + 20
+        },
+        frames: {
+            max: 4
+        },
+        image: villager1
+    })
+};
+
+const Francois = {
+    sprite: new Sprite({
+        position: {
+            x: canvas.width / 2 - 30,
+            y: canvas.height / 2 + 30
+        },
+        frames: {
+            max: 4
+        },
+        image: villager2
+    })
+};
+
+const villagers = [Albert, Francois];
 
 // Map creation
 
@@ -135,8 +172,10 @@ const keys = {
         pressed: false
     }
 }
+const villagersMovable = villagers.map(villager => villager.sprite);
 
-const movable = [backgroundMap , foregroundMap, ...mapOfCollisions, ...frontOfHomes, backgroundHome, ...homeOfCollisions];
+const movable = [backgroundMap , foregroundMap, ...villagersMovable, ...mapOfCollisions, ...frontOfHomes,
+     backgroundHome, ...homeOfCollisions];
  
 function rectangularCollision({rectangle1, rectangle2}) {
     return(
@@ -145,6 +184,15 @@ function rectangularCollision({rectangle1, rectangle2}) {
         rectangle1.position.y <= rectangle2.position.y + rectangle2.height &&
         rectangle1.position.y + rectangle1.height >= rectangle2.position.y
     )
+}
+
+function dialogueFunction(text) {
+    if(text.length <= 475){
+        dialogue.textContent = text;
+    } else {
+        dialogue.textContent = "test"
+    }
+    dialogue.classList.toggle("active");
 }
 
 let base = "map";
@@ -157,10 +205,16 @@ function animate() {
     if(base === "map") {
 
         c.clearRect(0, 0, canvas.width, canvas.height);
+
         backgroundMap.draw();
         player.draw();
         foregroundMap.draw();
+
         player.moving = false;
+
+        villagers.forEach(villager => {
+            villager.sprite.draw();
+        });
 
         mapOfCollisions.forEach(mapOfCollision => {
             mapOfCollision.draw()
@@ -168,10 +222,11 @@ function animate() {
 
         frontOfHomes.forEach(frontOfHome => {
             frontOfHome.draw()
-        });
+        });        
 
         if(menuKeys) {
             if (keys.w.pressed && lastKey === "w") {
+
                 player.moving = true;
                 player.image = player.sprites.up;
 
@@ -191,6 +246,35 @@ function animate() {
                         break;
                     }
                 }
+
+                villagers.forEach(villager => {
+                    if (
+                        rectangularCollision({
+                            rectangle1: player,
+                            rectangle2: {...villager.sprite, position: {
+                                x: villager.sprite.position.x,
+                                y: villager.sprite.position.y + 2
+                            }}
+                        })
+                    ) {
+                        moving = false;
+                        player.moving = false;
+
+                        window.addEventListener("keydown", function(event) {
+                            if (event.key === " ") {
+                                if (villager === Albert) {
+                                    dialogueFunction("Vital est trop intelligent")
+                                } else if (villager === Francois) {
+                                    dialogueFunction("b")
+                                }
+                            } else {
+                                dialogue.classList.remove("active")
+                            }
+                        });
+
+
+                    }
+                });
 
                 for (let i = 0; i < frontOfHomes.length; i++) {
                     const frontOfHome = frontOfHomes[i];
@@ -217,9 +301,12 @@ function animate() {
                     })
                 }
             }
+
             else if (keys.s.pressed && lastKey === "s") {
+
                 player.moving = true;
                 player.image = player.sprites.down;
+
                 for (let i = 0; i < mapOfCollisions.length; i++) {
                     const boundary = mapOfCollisions[i];
                     if(
@@ -236,16 +323,19 @@ function animate() {
                         break;
                     }
                 }
-                
+
                 if(moving) {
                     movable.forEach((movable) => {
                         movable.position.y -= 2;
                     })
                 }
             }
+
             else if (keys.a.pressed && lastKey === "a") {
+
                 player.moving = true;
                 player.image = player.sprites.left;
+
                 for (let i = 0; i < mapOfCollisions.length; i++) {
                     const boundary = mapOfCollisions[i];
                     if(
@@ -269,9 +359,12 @@ function animate() {
                     })
                 }
             }
+
             else if (keys.d.pressed && lastKey === "d") {
+
                 player.moving = true;
                 player.image = player.sprites.right;
+
                 for (let i = 0; i < mapOfCollisions.length; i++) {
                     const boundary = mapOfCollisions[i];
                     if(
@@ -311,7 +404,6 @@ function animate() {
         frontOfHomes.forEach(frontOfHome => {
             frontOfHome.draw()
         });
-
 
         if(menuKeys) {
             if (keys.w.pressed && lastKey === "w") {
@@ -448,7 +540,7 @@ window.addEventListener("keydown", function(e) {
     switch (e.key) {
         case "w":
             keys.w.pressed = true;
-            lastKey = "w"
+            lastKey = "w";
             break;
         case "a":
             keys.a.pressed = true;

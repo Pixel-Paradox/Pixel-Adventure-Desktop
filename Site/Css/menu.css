@@ -88,13 +88,3 @@
     color: white;
 
 }
-
-@media screen and (max-width: 550px) {
-    .btn {
-        width: 300px;
-    }
-    
-    .inputSize {
-        width: 140px;
-    }
-}
