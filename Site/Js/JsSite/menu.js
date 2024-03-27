@@ -1,6 +1,6 @@
-if (window.location.protocol != "https:") {
+/*if (window.location.protocol != "https:") {
     window.location.protocol="https:";
-}
+}*/
 
 document.addEventListener("contextmenu", function (event) {
     event.preventDefault();

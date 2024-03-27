@@ -186,15 +186,47 @@ function rectangularCollision({rectangle1, rectangle2}) {
     )
 }
 
-function dialogueFunction(text) {
-    if(text.length <= 475){
-        dialogue.textContent = text;
-    } else {
-        dialogue.textContent = "test"
+function keydialogue(villager) {
+    if (villager === Albert) {
+        dialogueFunction("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaax");
+    } else if (villager === Francois) {
+        dialogueFunction("Bonjour!");
     }
-    dialogue.classList.toggle("active");
 }
 
+let numChunks;
+let time;
+
+function dialogueFunction(text) {
+    numChunks = Math.ceil(text.length / 475);
+
+    let currentChunkIndex = 0;
+    
+    function displayNextChunk() {
+        const startIndex = currentChunkIndex * 475;
+        const endIndex = Math.min(startIndex + 475, text.length);
+    
+        const chunk = text.substring(startIndex, endIndex);
+    
+        dialogue.textContent = chunk;
+        dialogue.classList.add("active");
+    
+        time = 3000 * numChunks
+
+        setTimeout(function() {
+            currentChunkIndex++;
+            if (currentChunkIndex < numChunks) {
+                displayNextChunk();
+            }
+        }, time);
+
+        setTimeout(function() {
+            dialogue.classList.remove("active")
+        }, time + 3000);
+    }
+    displayNextChunk();
+}
+    
 let base = "map";
 
 function animate() {
@@ -257,22 +289,12 @@ function animate() {
                             }}
                         })
                     ) {
+                        
                         moving = false;
                         player.moving = false;
 
-                        window.addEventListener("keydown", function(event) {
-                            if (event.key === " ") {
-                                if (villager === Albert) {
-                                    dialogueFunction("Vital est trop intelligent")
-                                } else if (villager === Francois) {
-                                    dialogueFunction("b")
-                                }
-                            } else {
-                                dialogue.classList.remove("active")
-                            }
-                        });
 
-
+                        keydialogue(villager);
                     }
                 });
 
@@ -294,7 +316,7 @@ function animate() {
                         break;
                     }
                 }
-                
+
                 if(moving) {
                     movable.forEach((movable) => {
                         movable.position.y += 2;
@@ -323,6 +345,22 @@ function animate() {
                         break;
                     }
                 }
+
+                villagers.forEach(villager => {
+                    if (
+                        rectangularCollision({
+                            rectangle1: player,
+                            rectangle2: {...villager.sprite, position: {
+                                x: villager.sprite.position.x,
+                                y: villager.sprite.position.y - 2
+                            }}
+                        })
+                    ) {
+                        
+                        moving = false;
+                        player.moving = false;
+                    }
+                });
 
                 if(moving) {
                     movable.forEach((movable) => {
@@ -353,6 +391,22 @@ function animate() {
                     }
                 }
 
+                villagers.forEach(villager => {
+                    if (
+                        rectangularCollision({
+                            rectangle1: player,
+                            rectangle2: {...villager.sprite, position: {
+                                x: villager.sprite.position.x + 2,
+                                y: villager.sprite.position.y
+                            }}
+                        })
+                    ) {
+                        
+                        moving = false;
+                        player.moving = false;
+                    }
+                });
+
                 if(moving) {
                     movable.forEach((movable) => {
                         movable.position.x += 2;
@@ -381,6 +435,22 @@ function animate() {
                         break;
                     }
                 }
+
+                villagers.forEach(villager => {
+                    if (
+                        rectangularCollision({
+                            rectangle1: player,
+                            rectangle2: {...villager.sprite, position: {
+                                x: villager.sprite.position.x - 2,
+                                y: villager.sprite.position.y
+                            }}
+                        })
+                    ) {
+                        
+                        moving = false;
+                        player.moving = false;
+                    }
+                });
 
                 if(moving) {
                     movable.forEach((movable) => {
