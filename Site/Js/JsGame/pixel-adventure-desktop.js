@@ -5,6 +5,8 @@ const c = canvas.getContext('2d');
 c.imageSmoothingEnabled = true;
 
 const dialogue = document.querySelector(".dialogue");
+const text = document.querySelector(".text");
+const username = document.querySelector(".name");
 
 // Hang Tiled data
 
@@ -186,47 +188,49 @@ function rectangularCollision({rectangle1, rectangle2}) {
     )
 }
 
+let timeoutVillager;
+let currentSegment = 0;
+
 function keydialogue(villager) {
+    clearTimeout(timeoutVillager);
     if (villager === Albert) {
-        dialogueFunction("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaax");
+        dialogueFunction("Albert", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaxbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbxcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccxdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddx");
     } else if (villager === Francois) {
-        dialogueFunction("Bonjour!");
+        dialogueFunction("Francois", "Bonjour!");
     }
 }
 
-let numChunks;
-let time;
+function dialogueFunction(usernames, texts) {
+    username.textContent = usernames;
+    let time = 3000;
+    let segmentLength = 200;
+    let a = Math.ceil(texts.length / segmentLength);
 
-function dialogueFunction(text) {
-    numChunks = Math.ceil(text.length / 475);
+    function displaySegment() {
+        let start = currentSegment * segmentLength;
+        let end = Math.min((currentSegment + 1) * segmentLength, texts.length);
 
-    let currentChunkIndex = 0;
-    
-    function displayNextChunk() {
-        const startIndex = currentChunkIndex * 475;
-        const endIndex = Math.min(startIndex + 475, text.length);
-    
-        const chunk = text.substring(startIndex, endIndex);
-    
-        dialogue.textContent = chunk;
-        dialogue.classList.add("active");
-    
-        time = 3000 * numChunks
+        text.textContent = texts.substring(start, end);
+        
+        currentSegment++;
 
-        setTimeout(function() {
-            currentChunkIndex++;
-            if (currentChunkIndex < numChunks) {
-                displayNextChunk();
-            }
-        }, time);
-
-        setTimeout(function() {
-            dialogue.classList.remove("active")
-        }, time + 3000);
+        if (currentSegment < a) {
+            timeoutVillager = setTimeout(displaySegment, time);
+        } else {
+            timeoutVillager = setTimeout(function() {
+                dialogue.classList.remove("active");
+            }, time);
+        }
     }
-    displayNextChunk();
+
+    currentSegment = 0;
+    displaySegment();
+
+    dialogue.classList.add("active");
 }
-    
+
+
+
 let base = "map";
 
 function animate() {
@@ -292,7 +296,6 @@ function animate() {
                         
                         moving = false;
                         player.moving = false;
-
 
                         keydialogue(villager);
                     }
