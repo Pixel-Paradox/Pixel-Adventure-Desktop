@@ -68,7 +68,7 @@ player4.src = './Site/ImageGame/player4.png';
 // Villager image
 
 const villager1 = new Image();
-villager1.src = './Site/ImageGame/player1.png';
+villager1.src = './Site/ImageGame/villager1.png';
 
 const villager2 = new Image();
 villager2.src = './Site/ImageGame/player1.png';
@@ -194,8 +194,10 @@ let currentSegment = 0;
 function keydialogue(villager) {
     clearTimeout(timeoutVillager);
     if (villager === Albert) {
+        villager.sprite.b = true
         dialogueFunction("Albert", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaxbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbxcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccxdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddx");
     } else if (villager === Francois) {
+        villager.sprite.b = true
         dialogueFunction("Francois", "Bonjour!");
     }
 }
@@ -218,6 +220,9 @@ function dialogueFunction(usernames, texts) {
             timeoutVillager = setTimeout(displaySegment, time);
         } else {
             timeoutVillager = setTimeout(function() {
+                villagers.forEach(villager => {
+                villager.sprite.b = false
+                })
                 dialogue.classList.remove("active");
             }, time);
         }
@@ -229,13 +234,10 @@ function dialogueFunction(usernames, texts) {
     dialogue.classList.add("active");
 }
 
-
-
 let base = "map";
 
 function animate() {
     window.requestAnimationFrame(animate);
-
     let moving = true;
 
     if(base === "map") {
@@ -244,13 +246,12 @@ function animate() {
 
         backgroundMap.draw();
         player.draw();
-        foregroundMap.draw();
-
-        player.moving = false;
-
         villagers.forEach(villager => {
             villager.sprite.draw();
         });
+        foregroundMap.draw();
+
+        player.moving = false;
 
         mapOfCollisions.forEach(mapOfCollision => {
             mapOfCollision.draw()
