@@ -24,31 +24,18 @@ class Sprite {
             this.image.width / this.frames.max,
             this.image.height
         );
-
-        if(this.moving) {
-            if(this.frames.max > 1) {
-                this.frames.elapsed++;
-            }
-
-            if(this.frames.elapsed % 15 === 0) {
-                if(this.frames.val + 1 < this.frames.max) {
-                    this.frames.val++;
-                } else {
-                    this.frames.val = 0;
+        if(menuKeys) {
+            if(this.moving || this.movingVillager) {
+                if(this.frames.max > 1) {
+                    this.frames.elapsed++;
                 }
-            }
-        }
 
-        if(this.b) {
-            if(this.frames.max > 1) {
-                this.frames.elapsed++;
-            }
-
-            if(this.frames.elapsed % 15 === 0) {
-                if(this.frames.val + 1 < this.frames.max) {
-                    this.frames.val++;
-                } else {
-                    this.frames.val = 0;
+                if(this.frames.elapsed % 15 === 0) {
+                    if(this.frames.val + 1 < this.frames.max) {
+                        this.frames.val++;
+                    } else {
+                        this.frames.val = 0;
+                    }
                 }
             }
         }

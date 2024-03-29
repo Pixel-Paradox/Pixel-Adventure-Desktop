@@ -194,10 +194,8 @@ let currentSegment = 0;
 function keydialogue(villager) {
     clearTimeout(timeoutVillager);
     if (villager === Albert) {
-        villager.sprite.b = true
         dialogueFunction("Albert", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaxbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbxcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccxdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddx");
     } else if (villager === Francois) {
-        villager.sprite.b = true
         dialogueFunction("Francois", "Bonjour!");
     }
 }
@@ -206,22 +204,21 @@ function dialogueFunction(usernames, texts) {
     username.textContent = usernames;
     let time = 3000;
     let segmentLength = 200;
-    let a = Math.ceil(texts.length / segmentLength);
+    let nbDialogue = Math.ceil(texts.length / segmentLength);
 
     function displaySegment() {
         let start = currentSegment * segmentLength;
         let end = Math.min((currentSegment + 1) * segmentLength, texts.length);
 
         text.textContent = texts.substring(start, end);
-        
         currentSegment++;
 
-        if (currentSegment < a) {
+        if (currentSegment < nbDialogue) {
             timeoutVillager = setTimeout(displaySegment, time);
         } else {
             timeoutVillager = setTimeout(function() {
                 villagers.forEach(villager => {
-                villager.sprite.b = false
+                    villager.sprite.movingVillager = false
                 })
                 dialogue.classList.remove("active");
             }, time);
@@ -246,9 +243,11 @@ function animate() {
 
         backgroundMap.draw();
         player.draw();
+
         villagers.forEach(villager => {
             villager.sprite.draw();
         });
+
         foregroundMap.draw();
 
         player.moving = false;
@@ -297,6 +296,8 @@ function animate() {
                         
                         moving = false;
                         player.moving = false;
+
+                        villager.sprite.movingVillager = true
 
                         keydialogue(villager);
                     }
