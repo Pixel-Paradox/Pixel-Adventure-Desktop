@@ -37,7 +37,6 @@
     background-color: rgba(255, 255, 255, 0.325);
     color: white;
     font-size: 1.5em;
-    cursor: pointer;
     transition: 1s;
     box-shadow : 9px 9px 1px rgba(255, 255, 255, 0.217);
     cursor: none;
@@ -47,6 +46,12 @@
 .menu.active .btn {
 
     cursor: pointer;
+    
+}
+
+.menu.active .touche {
+
+    cursor: default;
     
 }
  
@@ -59,8 +64,21 @@
 .size {
 
     display: flex;          
-    justify-content: center; 
     gap: 20px; 
+
+}
+
+.touche {
+
+    flex-direction: column;          
+    gap: 20px;
+    height: 300px; 
+
+}
+
+.touche:hover {  
+
+    height: 300px;
 
 }
 

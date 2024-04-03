@@ -1,6 +1,6 @@
-if (window.location.protocol != "https:") {
+/*if (window.location.protocol != "https:") {
     window.location.protocol="https:";
-}
+}*/
 
 document.addEventListener("contextmenu", function (event) {
     event.preventDefault();
@@ -12,26 +12,13 @@ const reprendre = document.querySelector(".reprendre");
 const inputSizes = document.querySelectorAll(".inputSize");
 const ecran = document.querySelector(".ecran");
 
-let menuKeys = true;
+let menuKeys = false;
 
-var menuState = localStorage.getItem('menuState');
-if (menuState === 'active') {
-    menu.classList.add('active');
-    body.style.cursor = "default";
-    menuKeys = false;
-} else {
-    menu.classList.remove('active');
-    body.style.cursor = "none";
-    menuKeys = true;
-}
-    
 document.addEventListener('keydown', function(event) {
     if (event.keyCode === 81) {
         menu.classList.toggle("active");
-        menuKeys = !menu.classList.contains('active');
-
-        var newState = menu.classList.contains('active') ? 'active' : 'inactive';
-        localStorage.setItem('menuState', newState);
+        
+        menuKeys = menu.classList.contains('active');
 
         body.style.cursor = menu.classList.contains('active') ? "default" : "none";
     } 
@@ -40,10 +27,8 @@ document.addEventListener('keydown', function(event) {
 reprendre.onclick = function() {
     menu.classList.remove("active");
     body.style.cursor = "none";
-    menuKeys = true;
-    localStorage.setItem('menuState', 'inactive');
+    menuKeys = menu.classList.contains('active');
 };
-
 
 inputSizes.forEach((input, index) => {
     input.maxLength = 3;

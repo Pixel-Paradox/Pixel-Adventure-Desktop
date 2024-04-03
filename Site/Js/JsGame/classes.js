@@ -8,6 +8,7 @@ class Sprite {
             this.width = this.image.width / this.frames.max;
             this.height = this.image.height;
         };
+        this.movingVillager = false
         this.moving = false; 
         this.sprites = sprites;       
     }
@@ -24,7 +25,8 @@ class Sprite {
             this.image.width / this.frames.max,
             this.image.height
         );
-        if(menuKeys) {
+        
+        if(!menuKeys) {
             if(this.moving || this.movingVillager) {
                 if(this.frames.max > 1) {
                     this.frames.elapsed++;

@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="Site/Css/pixel-adventure-desktop.css">
         <link rel="stylesheet" type="text/css" href="Site/Css/menu.css">
         <link rel="stylesheet" type="text/css" href="Site/Css/dialogue.css">
+        <link rel="stylesheet" type="text/css" href="Site/Css/carte.css">
         <link rel="stylesheet" type="text/css" href="Site/Css/respensive.css">
 
         <script defer src="Site/Js/JsSite/menu.js"></script>
@@ -16,6 +17,10 @@
         <script defer src="Site/Js/JsGame/TiledData/frontHome.js"></script>
         <script defer src="Site/Js/JsGame/classes.js"></script>
         <script defer src="Site/Js/JsGame/pixel-adventure-desktop.js"></script>
+        <script defer src="Site/Js/JsGame/collisions.js"></script>
+        <script defer src="Site/Js/JsGame/sprite.js"></script>
+        <script defer src="Site/Js/JsGame/dialogue.js"></script>
+        <script defer src="Site/Js/JsGame/play.js"></script>
 
         <link rel="icon" href="Site/ImageSite/pixel-adventure-desktop.png" type="image/png">
         <link rel="icon" type="image/svg+xml" href="Site/ImageSite/pixel-adventure-desktop.svg">
@@ -31,6 +36,21 @@
                 <input type="number" class="inputSize btn" pattern="[0-9]*" placeholder="Hauteur" min="1" max="100" inputmode="numeric" >
             </div>
             <div class="ecran btn">Plein écran</div>
+            <div class="touche btn">
+                <p>q = ouvrir le menu</p>
+                <p>e = ouvrir les cartes</p>
+                <p>w = avancer</p>
+                <p>s = reculer</p>
+                <p>a = allé à gauche</p>
+                <p>d = allé à droite</p>
+            </div>
+        </div>
+
+        <div class="carte">
+            <div>
+                <p>Amarantis</p>
+                <img class="carteImg" src="/Site/ImageGame/village.png" alt="Village">
+            </div>
         </div>
 
         <div class="dialogue">

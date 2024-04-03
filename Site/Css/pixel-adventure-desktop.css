@@ -15,6 +15,7 @@ body {
     background-color: black; 
     overflow: hidden;
     cursor: none;
+
 }
 
 canvas {
@@ -34,18 +35,18 @@ canvas {
 
     width: 0.5vw;
   
-  }
+}
   
-  ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   
     background-color: white;
     border-radius: 6vh;
     height: 16.5vh; 
   
-  }
+}
   
-  ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   
     background-color: #555;
   
-  }
+}
