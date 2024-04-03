@@ -45,7 +45,7 @@ function dialogueFunction(usernames, texts) {
 let vagabondDialogue = false
 let chefDialogue = false
 
-let map = false;
+let map = true;
 
 function keydialogue(villager) {
     clearTimeout(timeoutVillager);

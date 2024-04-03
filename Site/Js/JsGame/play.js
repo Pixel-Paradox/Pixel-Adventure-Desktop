@@ -22,8 +22,11 @@ function animate() {
     window.requestAnimationFrame(animate);
 
     if(menuKeys) {
-        dialogue.classList.remove("active")
-        carte.classList.remove("active")
+        dialogue.classList.remove("active");
+        carte.classList.remove("active");
+        
+        carteKeys = false;
+
         villagers.forEach(villager => {
             villager.sprite.movingVillager = false;
         })
