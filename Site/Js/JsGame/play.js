@@ -24,6 +24,9 @@ function animate() {
     if(menuKeys) {
         dialogue.classList.remove("active")
         carte.classList.remove("active")
+        villagers.forEach(villager => {
+            villager.sprite.movingVillager = false;
+        })
     }
 
     let moving = true;
