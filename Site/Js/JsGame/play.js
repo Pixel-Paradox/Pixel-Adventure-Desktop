@@ -271,6 +271,8 @@ function animate() {
             villager.sprite.draw();
         });
 
+        foregroundHome.draw();
+
         player.moving = false;
 
         homeOfCollisions.forEach(homeOfCollision => {

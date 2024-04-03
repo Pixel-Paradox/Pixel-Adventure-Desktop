@@ -29,12 +29,15 @@ const mapBackground = new Image();
 mapBackground.src = './Site/ImageGame/map.png';
 
 const mapForeground = new Image();
-mapForeground.src = './Site/ImageGame/foreground.png';
+mapForeground.src = './Site/ImageGame/mapForeground.png';
 
 // Houses image 
 
 const homeBackground = new Image();
 homeBackground.src = './Site/ImageGame/home.png';
+
+const homeForeground = new Image();
+homeForeground.src = './Site/ImageGame/homeForeground.png';
 
 // Player creation
 
@@ -60,13 +63,26 @@ const player = new Sprite({
 const vagabond = {
     sprite: new Sprite({
         position: {
-            x: canvas.width / 2 + 50,
-            y: canvas.height / 2 + 20
+            x: canvas.width / 2 + 35,
+            y: canvas.height / 2 - 25
         },
         frames: {
             max: 4
         },
         image: vagabondImage
+    }),
+};
+
+const chef = {
+    sprite: new Sprite({
+        position: {
+            x: canvas.width / 2 + 155,
+            y: canvas.height / 2 + 390
+        },
+        frames: {
+            max: 4
+        },
+        image: chefImage
     }),
 };
 
@@ -77,26 +93,13 @@ const vagabond = {
 const ragnerus = {
     sprite: new Sprite({
         position: {
-            x: canvas.width / 2 + 200,
-            y: canvas.height / 2 + 200
+            x: canvas.width / 2 + 195,
+            y: canvas.height / 2 + 195
         },
         frames: {
             max: 4
         },
         image: ragnerusImage
-    }),
-};
-
-const chef = {
-    sprite: new Sprite({
-        position: {
-            x: canvas.width / 2 + 230,
-            y: canvas.height / 2 + 420
-        },
-        frames: {
-            max: 4
-        },
-        image: chefImage
     }),
 };
 
@@ -214,7 +217,14 @@ const backgroundHome = new Sprite({
     image: homeBackground
 })
 
+const foregroundHome = new Sprite({
+    position: {
+        x: offset.x,
+        y: offset.y
+    },
+    image: homeForeground
+})
 
 const movable = [backgroundMap , foregroundMap, ...mapOfCollisions,
     ...frontOfHomes, ...villagersMovable,
-    backgroundHome, ...homeOfCollisions];
+    backgroundHome, foregroundHome, ...homeOfCollisions];

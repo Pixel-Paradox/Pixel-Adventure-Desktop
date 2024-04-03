@@ -27,6 +27,7 @@ function dialogueFunction(usernames, texts) {
             timeoutVillager = setTimeout(displaySegment, time);
         } else {
             timeoutVillager = setTimeout(function() {
+                
                 villagers.forEach(villager => {
                     villager.sprite.movingVillager = false;
                 })
@@ -67,6 +68,6 @@ function keydialogue(villager) {
             dialogueFunction("Ragnerus", "Bonjour, je vois que vous êtes nouveau. Ici, c'est le village d'Amarantis. Le vagabond vous a ramené à l'Hôpital du Village, on ne sait pas où il vous a trouvé. Vous êtes resté endormi pendant plusieurs mois. Le vagabond est bizarre... il ne parle avec personne... on ne le connaît pas tellement... Ce n'est pas un habitant d'Amarantis. Il habite dans la forêt à l'ouest. Le chef du village d'Amarantis attend avec impatience de vous parler. Il se trouve dans sa grande maison au sud du village.");
         }
     } else {
-        dialogueFunction("Maitre du jeu", "Veulliez d'abord parler au vagbond.");
+        dialogueFunction("Maitre du jeu", "Veuillez d'abord parler au vagbond.");
     }
 }
