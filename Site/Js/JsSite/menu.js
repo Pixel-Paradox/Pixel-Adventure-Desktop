@@ -1,6 +1,6 @@
-if (window.location.protocol != "https:") {
+/*if (window.location.protocol != "https:") {
     window.location.protocol="https:";
-}
+}*/
 
 document.addEventListener("contextmenu", function (event) {
     event.preventDefault();
@@ -10,6 +10,7 @@ const body = document.querySelector("body");
 const menu = document.querySelector(".menu");
 const reprendre = document.querySelector(".reprendre");
 const inputSizes = document.querySelectorAll(".inputSize");
+const musiqueBtn = document.querySelector(".musique");
 const ecran = document.querySelector(".ecran");
 
 let menuKeys = false;
@@ -59,6 +60,14 @@ inputSizes.forEach((input, index) => {
     });
 });
 
+function music(event) {
+    musique = true;
+    document.removeEventListener('keydown', music);
+    document.removeEventListener('click', music); 
+}
+
+document.addEventListener('keydown', music);
+
 window.addEventListener('DOMContentLoaded', function() {
     const storedWidth = localStorage.getItem("canvasWidth");
     const storedHeight = localStorage.getItem("canvasHeight");
@@ -88,17 +97,39 @@ function limitNumberLength(inputSizes, maxLength) {
     }
 }
 
+let musique = false;
+
+musiqueBtn.onclick = function() {
+    if (!musique) {
+        musiqueBtn.textContent = "Musique activé";
+        musique = true
+
+    } else {
+
+        musiqueBtn.textContent = "Musique désactivé";
+        
+        for (let key in musiques) {
+            if (musiques.hasOwnProperty(key)) {
+                musiques[key].pause();
+            }
+        }
+        document.removeEventListener('keydown', music);
+        document.removeEventListener('click', music); 
+        musique = false
+    }
+}
+
 let pleinEcranActif = false;
 
 ecran.onclick = function() {
     if (!pleinEcranActif) {
         enterFullscreen();
         pleinEcranActif = true;
-        ecran.textContent = "Enlever le plein écran";
+        ecran.textContent = "Plein écran activé";
     } else {
         exitFullscreen();
         pleinEcranActif = false;
-        ecran.textContent = "Plein écran";
+        ecran.textContent = "Plein écran désactivé";
     }
 };
 

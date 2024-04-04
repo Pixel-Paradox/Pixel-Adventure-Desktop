@@ -36,6 +36,11 @@ function animate() {
 
     if(base === "map") {
 
+        if(musique){
+            musiqueHome.pause()
+            musiqueMap.play()
+        }
+
         c.clearRect(0, 0, canvas.width, canvas.height);
 
         backgroundMap.draw();
@@ -261,6 +266,11 @@ function animate() {
         }
     }
     else if(base === "home") {
+
+        if(musique){
+            musiqueMap.pause()
+            musiqueHome.play()
+        }
 
         c.clearRect(0, 0, canvas.width, canvas.height);
 
