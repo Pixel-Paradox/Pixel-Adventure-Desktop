@@ -89,6 +89,19 @@ window.addEventListener('DOMContentLoaded', function() {
         inputSizes[1].value = storedHeight;
         canvas.style.height = `${storedHeight}vh`;
     }
+
+    const musiqueActive = localStorage.getItem("musiqueActive");
+    
+    if (musiqueActive === "true") {
+        musiqueBtn.textContent = "Musique activée";
+
+    } else {
+        musiqueBtn.textContent = "Musique désactivée";
+
+        document.removeEventListener('keydown', music);
+        document.removeEventListener('click', music);
+        musique = false;
+    }
 });
 
 function limitNumberLength(inputSizes, maxLength) {
@@ -101,21 +114,21 @@ let musique = false;
 
 musiqueBtn.onclick = function() {
     if (!musique) {
-        musiqueBtn.textContent = "Musique activé";
-        musique = true
+        musiqueBtn.textContent = "Musique activée";
+        musique = true;
 
+        localStorage.setItem("musiqueActive", "true");
     } else {
-
-        musiqueBtn.textContent = "Musique désactivé";
-        
+        musiqueBtn.textContent = "Musique désactivée";
+  
         for (let key in musiques) {
             if (musiques.hasOwnProperty(key)) {
                 musiques[key].pause();
             }
         }
-        document.removeEventListener('keydown', music);
-        document.removeEventListener('click', music); 
-        musique = false
+        musique = false;
+
+        localStorage.setItem("musiqueActive", "false");
     }
 }
 
