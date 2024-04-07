@@ -16,6 +16,8 @@
     visibility: hidden;
     opacity: 0;
     transition: 2s;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
 
 }
 

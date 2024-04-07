@@ -1,6 +1,6 @@
-if (window.location.protocol != "https:") {
+/*if (window.location.protocol != "https:") {
     window.location.protocol="https:";
-}
+}*/
 
 document.addEventListener("contextmenu", function (event) {
     event.preventDefault();
@@ -68,42 +68,6 @@ function music(event) {
 
 document.addEventListener('keydown', music);
 
-window.addEventListener('DOMContentLoaded', function() {
-    const storedWidth = localStorage.getItem("canvasWidth");
-    const storedHeight = localStorage.getItem("canvasHeight");
-    
-    if (!storedWidth) {
-        inputSizes[0].value = 100;
-        canvas.style.width = "100vw";
-        localStorage.setItem("canvasWidth", "100");
-    } else {
-        inputSizes[0].value = storedWidth;
-        canvas.style.width = `${storedWidth}vw`;
-    }
-    
-    if (!storedHeight) {
-        inputSizes[1].value = 100;
-        canvas.style.height = "100vh";
-        localStorage.setItem("canvasHeight", "100");
-    } else {
-        inputSizes[1].value = storedHeight;
-        canvas.style.height = `${storedHeight}vh`;
-    }
-
-    const musiqueActive = localStorage.getItem("musiqueActive");
-    
-    if (musiqueActive === "true") {
-        musiqueBtn.textContent = "Musique activée";
-
-    } else {
-        musiqueBtn.textContent = "Musique désactivée";
-
-        document.removeEventListener('keydown', music);
-        document.removeEventListener('click', music);
-        musique = false;
-    }
-});
-
 function limitNumberLength(inputSizes, maxLength) {
     if (inputSizes.value.length > maxLength) {
         inputSizes.value = input.value.slice(0, maxLength);
@@ -169,3 +133,39 @@ function exitFullscreen() {
         document.msExitFullscreen();
     }
 }
+
+window.addEventListener('DOMContentLoaded', function() {
+    const storedWidth = localStorage.getItem("canvasWidth");
+    const storedHeight = localStorage.getItem("canvasHeight");
+    
+    if (!storedWidth) {
+        inputSizes[0].value = 100;
+        canvas.style.width = "100vw";
+        localStorage.setItem("canvasWidth", "100");
+    } else {
+        inputSizes[0].value = storedWidth;
+        canvas.style.width = `${storedWidth}vw`;
+    }
+    
+    if (!storedHeight) {
+        inputSizes[1].value = 100;
+        canvas.style.height = "100vh";
+        localStorage.setItem("canvasHeight", "100");
+    } else {
+        inputSizes[1].value = storedHeight;
+        canvas.style.height = `${storedHeight}vh`;
+    }
+
+    const musiqueActive = localStorage.getItem("musiqueActive");
+    
+    if (musiqueActive === "true") {
+        musiqueBtn.textContent = "Musique activée";
+
+    } else {
+        musiqueBtn.textContent = "Musique désactivée";
+
+        document.removeEventListener('keydown', music);
+        document.removeEventListener('click', music);
+        musique = false;
+    }
+});

@@ -1,0 +1,40 @@
+.topaz {
+
+    border-radius: 10px;
+    border-top-left-radius: 0px;
+    background-color: rgba(255, 255, 255, 0.325);
+    box-shadow : 7px 8px 1px rgba(255, 255, 255, 0.217);
+    color: white;
+    width: min-content;
+    display: flex;
+    padding: 13px;
+    gap: 15px;
+
+}
+
+.imgTopaz {
+
+    width: 45px;
+    height: 45px;
+
+}
+
+.textTopaz {
+
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+
+}
+
+.nameTopaz {
+
+    font-size: 1.3em;
+
+}
+
+.nbTopaz {
+
+    font-size: 0.9em;
+
+}

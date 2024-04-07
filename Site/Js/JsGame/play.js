@@ -16,10 +16,14 @@ const keys = {
     }
 }
 
+let carteKeys = false
+
 let base = "home";
 
 function animate() {
     window.requestAnimationFrame(animate);
+
+    nbTopaz.textContent = topaz;
 
     if(menuKeys) {
         dialogue.classList.remove("active");

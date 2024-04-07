@@ -1,5 +1,5 @@
-let musiqueHome = new Audio('a.mp3');
-let musiqueMap = new Audio('b.mp3');
+let musiqueHome = new Audio('./Site/Music/home.mp3');
+let musiqueMap = new Audio('./Site/Music/map.mp3');
 
 let musiques = {
     musiqueHome,
