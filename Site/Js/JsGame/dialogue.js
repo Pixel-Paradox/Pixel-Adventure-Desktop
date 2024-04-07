@@ -2,11 +2,11 @@ const dialogue = document.querySelector(".dialogue");
 const text = document.querySelector(".text");
 const username = document.querySelector(".name");
 
-const nbTopaz = document.querySelector(".nbTopaz");
+const nbTopaze = document.querySelector(".nbTopaze");
 
 const carte = document.querySelector(".carte");
 
-let topaz = 0;
+let topaze = 0;
 
 let vagabondDialogueNb = 0;
 let vagabondDialogue = 0;
@@ -81,11 +81,11 @@ function keydialogue(villager) {
 
         if (villager === chef) {
             if(chefDialogueNb === 0) {
-                dialogueFunction("Chef d'Amarantis", "Bienvenue à Amarantis, c'est moi qui dirige ce petit village. Comme vous le savez peut-être, le vagabond vous a trouvé évanoui et vous a ramené à l'Hôpital du Village, mais on ne sait pas où il vous a trouvé. Vous êtes resté endormi pendant plusieurs mois. Ces temps-ci, il se passe des choses bizarres. Une menace vous en veut. Excusez-moi, je ne vous ai pas demandé votre nom et d'où vous venez? ...Je vois, vous ne vous en souvenez de rien. Pour visiter le village je vais vous donner une carte du village, vous pourrez aller à la rencontre des autres villageois, ils sont très sympas. Allez voir la bibliothèque, le magasin, etc... et les villageois, pour en savoir plus sur ce village. Nous avons notre propre monnaie le topaz vous pouvez vous en procurez en rendand des service au gens par exemple. Je vais vous en donnez 10, mais n'allez surtout pas à la forêt, c'est dangereux d'aller là-bas. Il y a quelque temps, un villageois y est allé et n'est jamais revenu...");
+                dialogueFunction("Chef d'Amarantis", "Bienvenue à Amarantis, c'est moi qui dirige ce petit village. Comme vous le savez peut-être, le vagabond vous a trouvé évanoui et vous a ramené à l'Hôpital du Village, mais on ne sait pas où il vous a trouvé. Vous êtes resté endormi pendant plusieurs mois. Ces temps-ci, il se passe des choses bizarres. Une menace vous en veut. Excusez-moi, je ne vous ai pas demandé votre nom et d'où vous venez? ...Je vois, vous ne vous en souvenez de rien. Pour visiter le village je vais vous donner une carte du village, vous pourrez aller à la rencontre des autres villageois, ils sont très sympas. Allez voir la bibliothèque, le magasin, etc... et les villageois, pour en savoir plus sur ce village. Nous avons notre propre monnaie le topaze vous pouvez vous en procurez en rendand des service au gens par exemple. Je vais vous en donnez 10, mais n'allez surtout pas à la forêt, c'est dangereux d'aller là-bas. Il y a quelque temps, un villageois y est allé et n'est jamais revenu...");
                 map = true;
                 if(chefDialogue === 0) {
                     /*vagabondDialogueNb = 1;*/
-                    topaz += 10;
+                    topaze += 10;
                 }
                 chefDialogue = 1;
             }
@@ -93,14 +93,14 @@ function keydialogue(villager) {
       
         if (villager === ragnerus) {
             if(ragnerusDialogueNb === 0) {
-                dialogueFunction("Ragnerus", "Bonjour, je vois que vous êtes nouveau. Ici, c'est le village d'Amarantis. J'habite ici, ma maison est juste a coté je m'appelle Ragnerus. Le vagabond vous a ramené à l'Hôpital du Village. Vous êtes resté longtemps. Le vagabond est bizarre... il ne parle avec personne... on ne le connaît pas tellement... Ce n'est pas un habitant d'Amarantis. Il habite dans la forêt à l'ouest, c'est un forêt dangereuse. Le chef du village d'Amarantis attend avec impatience de vous parler. Il se trouve dans sa grande maison au sud du village, et j'allais oublier vous pouvez me rendre un service mon chien s'est perdu depuis plus de 2 jours essayez de le retrouver s'il vous plait, je vous donnerez une petite récompense.");
+                dialogueFunction("Ragnerus", "Bonjour, je vois que vous êtes nouveau. Ici, c'est le village d'Amarantis. J'habite ici, ma maison est juste a coté je m'appelle Ragnerus. Le vagabond vous a ramené à l'Hôpital du Village. Vous êtes resté longtemps. Le vagabond est bizarre... il ne parle avec personne... on ne le connaît pas tellement... Ce n'est pas un habitant d'Amarantis. Il habite dans la forêt à l'ouest, c'est un forêt dangereuse. Le chef du village d'Amarantis attend avec impatience de vous parler. Il se trouve dans sa maison au sud du village, et j'allais oublier vous pouvez me rendre un service mon chien s'est perdu depuis plus de 2 jours essayez de le retrouver s'il vous plait, je vous donnerez une petite récompense.");
                 ragnerusDialogue = 1;
             } else
 
             if(ragnerusDialogueNb === 1) {
                 dialogueFunction("Ragnerus", "Merci d'avoir retrouvé mon chien. J'avais si peur pour lui. Pour te remercier je te donne 3 topazes.");
                 if(ragnerusDialogue === 1) {;
-                    topaz += 3;
+                    topaze += 3;
                 }
                 ragnerusDialogue = 2;
             }

@@ -1,4 +1,4 @@
-.topaz {
+.topaze {
 
     border-radius: 10px;
     border-top-left-radius: 0px;
@@ -14,14 +14,14 @@
 
 }
 
-.imgTopaz {
+.imgTopaze {
 
     width: 45px;
     height: 45px;
 
 }
 
-.textTopaz {
+.textTopaze {
 
     display: flex;
     gap: 5px;
@@ -29,13 +29,13 @@
 
 }
 
-.nameTopaz {
+.nameTopaze {
 
     font-size: 1.3em;
 
 }
 
-.nbTopaz {
+.nbTopaze {
 
     font-size: 0.9em;
 

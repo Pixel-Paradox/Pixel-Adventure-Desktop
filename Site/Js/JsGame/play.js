@@ -23,7 +23,7 @@ let base = "home";
 function animate() {
     window.requestAnimationFrame(animate);
 
-    nbTopaz.textContent = topaz;
+    nbTopaze.textContent = topaze;
 
     if(menuKeys) {
         dialogue.classList.remove("active");
