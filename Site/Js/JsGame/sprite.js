@@ -112,8 +112,8 @@ const ragnerus = {
 const dog = {
     sprite: new Sprite({
         position: {
-            x: canvas.width / 2 + 250,
-            y: canvas.height / 2 + 300
+            x: canvas.width / 2 + 50,
+            y: canvas.height / 2 - 700
         },
         frames: {
             max: 4

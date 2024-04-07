@@ -1,42 +1,37 @@
-.topaze {
+.element {
 
-    border-radius: 10px;
-    border-top-left-radius: 0px;
+    display: flex;
     background-color: rgba(255, 255, 255, 0.325);
     box-shadow : 7px 8px 1px rgba(255, 255, 255, 0.217);
-    color: white;
     width: min-content;
-    display: flex;
+    border-radius: 10px;
+    border-top-left-radius: 0px;
     padding: 13px;
-    gap: 15px;
+    gap: 20px;
     position: relative;
     z-index: 2000;
 
 }
 
-.imgTopaze {
+.sectionElement {
+
+    color: white;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    text-align: center;
+
+}
+
+.imgElement {
 
     width: 45px;
     height: 45px;
 
 }
 
-.textTopaze {
+.nbElement {
 
-    display: flex;
-    gap: 5px;
-    flex-direction: column;
-
-}
-
-.nameTopaze {
-
-    font-size: 1.3em;
-
-}
-
-.nbTopaze {
-
-    font-size: 0.9em;
+    font-size: 1em;
 
 }

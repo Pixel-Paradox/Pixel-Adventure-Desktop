@@ -71,6 +71,7 @@ function keydialogue(villager) {
 
         if(vagabondDialogueNb === 1) {
             dialogueFunction("Le vagabond", "b");
+            vagabondDialogue = 2;
         }*/
     } else 
     
@@ -83,10 +84,12 @@ function keydialogue(villager) {
             if(chefDialogueNb === 0) {
                 dialogueFunction("Chef d'Amarantis", "Bienvenue à Amarantis, c'est moi qui dirige ce petit village. Comme vous le savez peut-être, le vagabond vous a trouvé évanoui et vous a ramené à l'Hôpital du Village, mais on ne sait pas où il vous a trouvé. Vous êtes resté endormi pendant plusieurs mois. Ces temps-ci, il se passe des choses bizarres. Une menace vous en veut. Excusez-moi, je ne vous ai pas demandé votre nom et d'où vous venez? ...Je vois, vous ne vous en souvenez de rien. Pour visiter le village je vais vous donner une carte du village, vous pourrez aller à la rencontre des autres villageois, ils sont très sympas. Allez voir la bibliothèque, le magasin, etc... et les villageois, pour en savoir plus sur ce village. Nous avons notre propre monnaie le topaze vous pouvez vous en procurez en rendand des service au gens par exemple. Je vais vous en donnez 10, mais n'allez surtout pas à la forêt, c'est dangereux d'aller là-bas. Il y a quelque temps, un villageois y est allé et n'est jamais revenu...");
                 map = true;
+
                 if(chefDialogue === 0) {
                     /*vagabondDialogueNb = 1;*/
                     topaze += 10;
                 }
+                
                 chefDialogue = 1;
             }
         } else 
@@ -99,10 +102,12 @@ function keydialogue(villager) {
 
             if(ragnerusDialogueNb === 1) {
                 dialogueFunction("Ragnerus", "Merci d'avoir retrouvé mon chien. J'avais si peur pour lui. Pour te remercier je te donne 3 topazes.");
+                
                 if(ragnerusDialogue === 1) {;
                     topaze += 3;
                 }
                 ragnerusDialogue = 2;
+
             }
         } else
 
@@ -114,14 +119,16 @@ function keydialogue(villager) {
             if (villager === dog) {
                 if(dogDialogueNb === 0) {
                     dialogueFunction("Chien de Ragnerus", "Woaf Woaf Woaf.");
+
                     if(dogDialogue === 0) {
                         setTimeout(function() {
-                            dog.sprite.position.y -= 100;
-                            dog.sprite.position.x -= 30;
+                            dog.sprite.position.y -= -950;
+                            dog.sprite.position.x -= -190;
                             ragnerusDialogueNb = 1;
-                        }, 12000);
+                        }, 11000);
                     }
                     dogDialogue = 1;
+
                 }
             }
 
