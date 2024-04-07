@@ -9,6 +9,8 @@
     display: flex;
     padding: 13px;
     gap: 15px;
+    position: relative;
+    z-index: 2000;
 
 }
 
