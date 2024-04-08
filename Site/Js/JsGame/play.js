@@ -16,7 +16,7 @@ const keys = {
     }
 }
 
-let carteKeys = false
+let carteKeys = false;
 
 let base = "home";
 
@@ -68,7 +68,7 @@ function animate() {
 
         if(!menuKeys && !carteKeys) {
             if (keys.w.pressed && lastKey === "w") {
-
+                PlayerSpeed = 10
                 player.moving = true;
                 player.image = player.sprites.up;
 
@@ -128,7 +128,7 @@ function animate() {
 
                 if(moving) {
                     movable.forEach((movable) => {
-                        movable.position.y += 2;
+                        movable.position.y += playerSpeed;
                     })
                 }
             }
@@ -173,7 +173,7 @@ function animate() {
 
                 if(moving) {
                     movable.forEach((movable) => {
-                        movable.position.y -= 2;
+                        movable.position.y -= playerSpeed;
                     })
                 }
             }
@@ -218,7 +218,7 @@ function animate() {
 
                 if(moving) {
                     movable.forEach((movable) => {
-                        movable.position.x += 2;
+                        movable.position.x += playerSpeed;
                     })
                 }
             }
@@ -263,7 +263,7 @@ function animate() {
 
                 if(moving) {
                     movable.forEach((movable) => {
-                        movable.position.x -= 2;
+                        movable.position.x -= playerSpeed;
                     })
                 }
             }
@@ -339,7 +339,7 @@ function animate() {
                 
                 if(moving) {
                     movable.forEach((movable) => {
-                        movable.position.y += 2;
+                        movable.position.y += playerSpeed;
                     })
                 }
             }
@@ -400,7 +400,7 @@ function animate() {
 
                 if(moving) {
                     movable.forEach((movable) => {
-                        movable.position.y -= 2;
+                        movable.position.y -= playerSpeed;
                     })
                 }
             }
@@ -442,7 +442,7 @@ function animate() {
 
                 if(moving) {
                     movable.forEach((movable) => {
-                        movable.position.x += 2;
+                        movable.position.x += playerSpeed;
                     })
                 }
             }
@@ -485,7 +485,7 @@ function animate() {
 
                 if(moving) {
                     movable.forEach((movable) => {
-                        movable.position.x -= 2;
+                        movable.position.x -= playerSpeed;
                     })
                 }
             }

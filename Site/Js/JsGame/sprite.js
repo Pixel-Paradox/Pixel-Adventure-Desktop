@@ -23,9 +23,6 @@ ragnerusImage.src = './Site/ImageGame/ragnerus.png';
 const chefImage = new Image();
 chefImage.src = './Site/ImageGame/chef.png';
 
-
-
-
 const dogImage = new Image();
 dogImage.src = './Site/ImageGame/dog.png';
 
@@ -112,8 +109,8 @@ const ragnerus = {
 const dog = {
     sprite: new Sprite({
         position: {
-            x: canvas.width / 2 + 50,
-            y: canvas.height / 2 - 700
+            x: canvas.width / 2 - 5,
+            y: canvas.height / 2 - 710
         },
         frames: {
             max: 4
