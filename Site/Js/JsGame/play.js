@@ -40,11 +40,10 @@ function animate() {
 
     if(base === "map") {
 
-        if(musique){
-            musiqueHome.pause()
-            musiqueMap.play()
+        if (musique) {
+            remplacerMusique(musiqueMap ,soundDialogue);
         }
-
+        
         c.clearRect(0, 0, canvas.width, canvas.height);
 
         backgroundMap.draw();
@@ -271,9 +270,8 @@ function animate() {
     }
     else if(base === "home") {
 
-        if(musique){
-            musiqueMap.pause()
-            musiqueHome.play()
+        if (musique) {
+            remplacerMusique(musiqueHome, soundDialogue);
         }
 
         c.clearRect(0, 0, canvas.width, canvas.height);
@@ -503,7 +501,7 @@ window.addEventListener("keydown", function(e) {
             lastKey = "e";
 
             if(!menuKeys){
-                if (map && lastKey === "e") {
+                if (chefDialogue !== 0 && lastKey === "e") {
                     carte.classList.toggle("active");
                     carteKeys = carte.classList.contains('active');
                 }

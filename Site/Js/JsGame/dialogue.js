@@ -15,13 +15,15 @@ let vagabondDialogue = 0;
 
 let chefDialogueNb = 0;
 let chefDialogue = 0;
-let map = false;
 
 let ragnerusDialogueNb = 0;
 let ragnerusDialogue = 0;
 
 let dogDialogueNb = 0;
 let dogDialogue = 0;
+
+let voyageurDialogueNb = 0;
+let voyageurDialogue = 0;
 
 let timeoutVillager;
 let currentSegment = 0;
@@ -40,6 +42,10 @@ function dialogueFunction(usernames, texts) {
 
         currentSegment++;
 
+        if (musique) {
+            soundDialogue.play();
+        }
+
         if (currentSegment < nbDialogue) {
             timeoutVillager = setTimeout(displaySegment, time);
         } else {
@@ -48,6 +54,10 @@ function dialogueFunction(usernames, texts) {
                 villagers.forEach(villager => {
                     villager.sprite.movingVillager = false;
                 })
+
+                if (musique) {
+                    soundDialogue.pause();
+                }
 
                 dialogue.classList.remove("active");
             }, time);
@@ -72,16 +82,17 @@ function keydialogue(villager) {
                 setTimeout(function() {
                     vagabond.sprite.position.y -= 100;
                     vagabond.sprite.position.x -= 1550;
+                    vagabondDialogueNb = 1;
                 }, 60000);
             }
             vagabondDialogue = 1;
 
-        } /*else
+        } else
 
         if(vagabondDialogueNb === 1) {
             dialogueFunction("Le vagabond", "b");
             vagabondDialogue = 2;
-        }*/
+        }
     } else 
     
 
@@ -92,13 +103,10 @@ function keydialogue(villager) {
         if (villager === chef) {
             if(chefDialogueNb === 0) {
                 dialogueFunction("Chef d'Amarantis", "Bienvenue à Amarantis, c'est moi qui dirige ce petit village. Comme vous le savez peut-être, le vagabond vous a trouvé évanoui et vous a ramené à l'Hôpital du Village, mais on ne sait pas où il vous a trouvé. Vous êtes resté endormi pendant plusieurs mois. Ces temps-ci, il se passe des choses bizarres. Une menace vous en veut. Excusez-moi, je ne vous ai pas demandé votre nom et d'où vous venez? ...Je vois, vous ne vous en souvenez de rien. Pour visiter le village je vais vous donner une carte du village, vous pourrez aller à la rencontre des autres villageois, ils sont très sympas. Allez voir la bibliothèque, le magasin, etc... et les villageois, pour en savoir plus sur ce village. Nous avons notre propre monnaie le topaze vous pouvez vous en procurez en rendand des service au gens par exemple. Je vais vous en donnez 10, mais n'allez surtout pas à la forêt, c'est dangereux d'aller là-bas. Il y a quelque temps, un villageois y est allé et n'est jamais revenu...");
-                map = true;
 
                 if(chefDialogue === 0) {
-                    /*vagabondDialogueNb = 1;*/
                     topaze += 10;
                 }
-                
                 chefDialogue = 1;
             }
         } else 
@@ -112,13 +120,20 @@ function keydialogue(villager) {
             if(ragnerusDialogueNb === 1) {
                 dialogueFunction("Ragnerus", "Merci d'avoir retrouvé mon chien. J'avais si peur pour lui. Pour te remercier je te donne 3 topazes.");
                 
-                if(ragnerusDialogue === 1) {;
+                if(ragnerusDialogue === 1) {
                     topaze += 3;
                 }
                 ragnerusDialogue = 2;
 
             }
         } else
+
+        if (villager === voyageur) {
+            if(voyageurDialogueNb === 0) {
+                dialogueFunction("Voyageur", "Salut! enfin je peut te tutoyé? ...Okay j");
+                vagabondDialogue = 1;
+            }
+        } else 
 
 
 
