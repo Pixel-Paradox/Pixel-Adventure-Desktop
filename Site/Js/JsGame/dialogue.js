@@ -2,14 +2,6 @@ const dialogue = document.querySelector(".dialogue");
 const text = document.querySelector(".text");
 const username = document.querySelector(".name");
 
-const nbTopaze = document.querySelector(".nbTopaze");
-
-const carte = document.querySelector(".carte");
-
-let topaze = 0;
-
-let playerSpeed = 2
-
 let vagabondDialogueNb = 0;
 let vagabondDialogue = 0;
 
@@ -24,6 +16,9 @@ let dogDialogue = 0;
 
 let voyageurDialogueNb = 0;
 let voyageurDialogue = 0;
+
+let georasDialogueNb = 0;
+let georasDialogue = 0;
 
 let timeoutVillager;
 let currentSegment = 0;
@@ -84,14 +79,14 @@ function keydialogue(villager) {
 
             // Vagabond 1 dialogue
 
-            dialogueFunction("Le vagabond", "Hé, vous là-bas. Vous vous êtes réveillé, approchez un peu plus, laisse-moi regarder dans tes yeux. Ah, je le savais. Tu es différent, n'est-ce pas ? Un fragment de quelque chose de bien plus grand, peut-être. Je ne suis pas ici pour te vendre des potions ou te raconter des histoires. Non, je suis ici pour te révéler la vérité, aussi sombre soit-elle. Les étoiles murmurent des secrets oubliés, des promesses brisées et des destins entrelacés. Et vous, mon ami, vous êtes au centre de tout cela. Les chemins que vous empruntez ne sont pas tracés dans le sable, mais dans le tissu même de la réalité. Chaque pas que vous faites résonne à travers les éthers de l'existence. Écoute-moi bien, car je ne répéterai pas ces mots. Ton destin est une énigme, une étoile filante dans la nuit, et vous seul détenez la clé de sa signification mais je ne peux pas vous en parler plus... Alors, allez-y. Explorez. Découvrez les mystères qui vous attendent, et peut-être, juste peut-être, trouverez-vous la vérité que vous cherchez...");
-            
+            dialogueFunction("Le vagabond", "Hé, vous là-bas. Vous vous êtes réveillé, approchez un peu plus. Tu ne sais pas ce qu'il s'est passé... Tu ne connais pas la vérité... je ne peux pas trop en dire... trouverez-vous par vous-même la vérité que vous cherchez... maintenant je dois partir.");
+    
             if(vagabondDialogue === 0) {
                 setTimeout(function() {
                     vagabond.sprite.position.y -= 100;
                     vagabond.sprite.position.x -= 1550;
                     vagabondDialogueNb = 1;
-                }, 60000);
+                }, 20000);
             }
 
             vagabondDialogue = 1;
@@ -114,6 +109,11 @@ function keydialogue(villager) {
 
     if(vagabondDialogue !== 0) {
 
+
+
+
+        // Quete principale
+
         // Chef
 
         if (villager === chef) {
@@ -121,10 +121,10 @@ function keydialogue(villager) {
 
                 // Chef 1 dialogue
 
-                dialogueFunction("Chef d'Amarantis", "Bienvenue à Amarantis, c'est moi qui dirige ce petit village. Comme vous le savez peut-être, le vagabond vous a trouvé évanoui et vous a ramené à l'Hôpital du Village. Vous êtes resté endormi pendant plusieurs mois. Ces temps-ci, il se passe des choses bizarres. Une menace vous en veut. Excusez-moi, je ne vous ai pas demandé votre nom et d'où vous venez? ...Je vois, vous ne vous en souvenez de rien. Pour visiter le village je vais vous donner une carte du village, vous pourrez aller à la rencontre des autres villageois, ils sont très sympas. Allez voir la bibliothèque, le magasin, etc... et les villageois, pour en savoir plus sur ce village. Nous avons notre propre monnaie le topaze vous pouvez vous en procurez en rendand des service au gens par exemple. Je vais vous en donnez 10. Il y a le voyageur Hesther qui vous attend avec impatience je crois qu'il a quleque chose à vous demandé, mais une dernière information n'allez surtout pas à la forêt, c'est dangereux d'aller là-bas. Il y a quelque temps, un villageois y est allé et n'est jamais revenu...");
+                dialogueFunction("Chef d'Amarantis", "Bienvenue à Amarantis, c'est moi qui dirige ce petit village. Comme vous le savez peut-être, le vagabond vous a trouvé évanoui et vous a ramené à l'Hôpital du Village. ...Quoi??? Il vous a parlé à l'hôpital et a disparu, je pense que vous avez rêvé. Vous êtes resté endormi pendant plusieurs mois. Ces temps-ci, il se passe des choses bizarres. Une menace vous en veut. Excusez-moi, je ne vous ai pas demandé votre nom et d'où vous venez? ...Je vois, vous ne vous en souvenez de rien. Pour visiter le village, je vais vous donner une carte du village, vous pourrez aller à la rencontre des autres villageois, ils sont très sympas. Allez voir la bibliothèque, le magasin, etc... et les villageois, pour en savoir plus sur ce village. Nous avons notre propre monnaie, le topaze. Vous pouvez vous en procurer en rendant des services aux gens, par exemple. Je vais vous en donner 10. Il y a le voyageur Hesther qui vous attend avec impatience, je crois qu'il a quelque chose à vous demander, mais une dernière information : n'allez surtout pas à la forêt, c'est dangereux d'y aller. Il y a quelque temps, un villageois y est allé et n'est jamais revenu...");
 
                 if(chefDialogue === 0) {
-                    topaze += 10;
+                    topazeChange(10);
                 }
 
                 chefDialogue = 1;
@@ -135,9 +135,19 @@ function keydialogue(villager) {
 
                 // Chef 2 dialogue
 
-                dialogueFunction("Chef d'Amarantis", "b");
+                dialogueFunction("Chef d'Amarantis", "Bonjour, Vous avez parlé avec le voyageur Hesther ...Vous allez l'aidé a finir son périple. Vous n'avez pas encore repris tout votre energie, allez d'abbord jusqu'a la maison de Georas Il est très sympa il vous expliqueras comment sont les montagnes il aimes bien faire des prommenades et quand vous reviendrez j'estimerais que vous êtes assé en forme pour partir avec le voyageur.");
 
                 chefDialogue = 2;
+
+            } else
+            
+            if(chefDialogueNb === 2) {
+
+                // Chef 3 dialogue
+
+                dialogueFunction("Chef d'Amarantis", "Vous êtes allez voir Georus ...Il vous a donné une potion de rapidité. Je pense que vous êtes près pour allé finir le périple avec le voyageur et sa vous permetteras peut-être de vous rémorer des souvenirs.");
+
+                chefDialogue = 3;
 
             }
         } else 
@@ -148,12 +158,14 @@ function keydialogue(villager) {
         // Voyageur
 
         if (villager === voyageur) {
+
             if(chefDialogue !== 0) {
+
                 if(voyageurDialogueNb === 0) {
 
                     // Voyageur 1 dialogue
 
-                    dialogueFunction("Voyageur", "Salut! enfin je peut te tutoyé? ...Okay alors on se tutoie Je m'appelle Hesther. Je suis un voyageur et un avantururié, je viens d'un autre village très au sud. Je suis en train de faire un long périple j'ai commencé par le Sud-Ouest et je prend une petite pause ici à Amarantis et je doit finir au nord-Ouest mais je voulais vous parler car pour finir mon voyage je doit passer par la forêt mais tout le monde m'a dit que c'était très dangereux et les habitant on tous peur depuis qu'un villageois n y est jammais revenu. Mais toi je ressens en toi que tu as du courrage voudrais tu bien m'acompagner pour finir mon périple ...Super je te rècompenserais à la fin de mon voyage Je vais commencé par monter sur la montagne pour voir la vue et voir la forêt de haut. Juste le chef du village veut que tu repose encore un peu on montera bientôt la montagne. Quand tu seras en forme vas parler au chef d'Amarantis.");
+                    dialogueFunction("Voyageur", "Salut ! Enfin je peux te tutoyer ? ...D'accord, alors on se tutoie. Je m'appelle Hesther. Je suis un voyageur et un aventurier, je viens d'un autre village très au sud. Je suis en train de faire un long périple, j'ai commencé par le Sud-Ouest et je prends une petite pause ici à Amarantis. Je dois finir au nord-Ouest mais je voulais te parler car pour finir mon voyage je dois passer par la forêt. Mais tout le monde m'a dit que c'était très dangereux et les habitants ont tous peur depuis qu'un villageois n'y est jamais revenu. Mais toi, je sens en toi que tu as du courage. Voudrais-tu bien m'accompagner pour finir mon périple ? ...Super, je te récompenserai à la fin de mon voyage. Je vais commencer par monter sur la montagne pour voir la vue et voir la forêt de haut. Juste je dois attendre que le chef du village accepte que tu parte avec moi, on commencera en montant la montagne au nord-est. Vas parler au chef d'Amarantis pour savoir si il est daccord qu tu parte avec moi.");
 
                     if(voyageurDialogue === 0) {
                         chefDialogueNb = 1;
@@ -161,6 +173,7 @@ function keydialogue(villager) {
 
                     voyageurDialogue = 1;
                 }
+
             } else {
                 dialogueFunction("Maitre du jeu", "Veuillez d'abord parler au Chef d'Amarantis.");
             }
@@ -168,6 +181,36 @@ function keydialogue(villager) {
 
 
 
+
+        // Georoas
+
+        if (villager === georas) {
+
+            if(chefDialogue > 1) {
+
+                if(georasDialogueNb === 0) {
+
+                    // Georas 1 dialogue
+
+                    dialogueFunction("Georas", "Bonjour, je m'appelle Georas. Je suis un ami du  chef d'Amarantis. Je fais beaucoup de promenade ...Tu veux gravire la montagne. C'est assé long mais C'est pas compliqué. je vais t'offrir une potion qui permet de courir plus vite, tellement vite que tu es invulnérable au dégat. C'est une potion verte et elle dure que 10 secondes, utilise la que quand vous en avez vraiment besoin. Allez de nouveau voir le chef du village.");
+
+                    if(georasDialogue === 0) {
+                        potionSpeedChange(1);
+                        chefDialogueNb = 2;
+                    }
+
+                    georasDialogue = 1;
+                }
+
+            } else {
+                dialogueFunction("Maitre du jeu", "Veuillez d'abord parler avec le deuxième dialogue du Chef.");
+            }
+        } else
+
+
+
+
+        // Quete secondaire
 
         // Ragnerus
       
@@ -186,10 +229,10 @@ function keydialogue(villager) {
 
                 // Ragnerus 2 dialogue
 
-                dialogueFunction("Ragnerus", "Merci d'avoir retrouvé mon chien. J'avais si peur pour lui. Pour te remercier je te donne 3 topazes.");
+                dialogueFunction("Ragnerus", "Merci d'avoir retrouvé mon chien. J'avais si peur pour lui. Il vous a griffé, je vais mieux l'éduquer. Pour te remercier de l'avoir ramené je te donne 3 topazes.");
                 
                 if(ragnerusDialogue === 1) {
-                    topaze += 3;
+                    topazeChange(3)
                 }
 
                 ragnerusDialogue = 2;
@@ -203,7 +246,9 @@ function keydialogue(villager) {
         // Chien
     
         if (villager === dog) {
+
             if(ragnerusDialogue !== 0) {
+
                 if(dogDialogueNb === 0) {
 
                     // Chien 1 dialogue
@@ -211,6 +256,7 @@ function keydialogue(villager) {
                     dialogueFunction("Chien de Ragnerus", "Woaf Woaf Woaf.");
 
                     if(dogDialogue === 0) {
+                        heartChange(-1);
                         setTimeout(function() {
                             dog.sprite.position.y -= -970;
                             dog.sprite.position.x -= -230;
@@ -220,7 +266,8 @@ function keydialogue(villager) {
 
                     dogDialogue = 1;
 
-                }          
+                }  
+
             } else {
                 dialogueFunction("Maitre du jeu", "Veuillez d'abord parler a Ragnerus.");
             }  

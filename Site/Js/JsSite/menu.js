@@ -12,6 +12,7 @@ const reprendre = document.querySelector(".reprendre");
 const inputSizes = document.querySelectorAll(".inputSize");
 const musiqueBtn = document.querySelector(".musique");
 const ecran = document.querySelector(".ecran");
+const recommencer = document.querySelectorAll(".recommencer");
 
 let menuKeys = false;
 
@@ -60,14 +61,6 @@ inputSizes.forEach((input, index) => {
     });
 });
 
-function music(event) {
-    musique = true;
-    document.removeEventListener('keydown', music);
-    document.removeEventListener('click', music); 
-}
-
-document.addEventListener('keydown', music);
-
 function limitNumberLength(inputSizes, maxLength) {
     if (inputSizes.value.length > maxLength) {
         inputSizes.value = input.value.slice(0, maxLength);
@@ -75,6 +68,14 @@ function limitNumberLength(inputSizes, maxLength) {
 }
 
 let musique = false;
+
+function music(event) {
+    musique = true;
+    document.removeEventListener('keydown', music);
+    document.removeEventListener('click', music); 
+}
+
+document.addEventListener('keydown', music);
 
 musiqueBtn.onclick = function() {
     if (!musique) {
@@ -133,6 +134,12 @@ function exitFullscreen() {
         document.msExitFullscreen();
     }
 }
+
+recommencer.forEach((recommencerBtn) => {
+    recommencerBtn.onclick = function() {
+        location.reload();
+    }
+})
 
 window.addEventListener('DOMContentLoaded', function() {
     const storedWidth = localStorage.getItem("canvasWidth");

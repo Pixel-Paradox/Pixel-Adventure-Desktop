@@ -1,0 +1,52 @@
+.died {
+
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    z-index: 2000;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;    
+    visibility: hidden;
+    opacity: 0;
+    transition: 2s; 
+    text-align: center;
+
+}
+
+.died.active {
+
+    visibility: visible; 
+    opacity: 1;
+
+}
+
+.diedTxt {
+
+    font-size: 3.5em;
+
+}
+
+.diedTopaze {
+
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+}
+
+.diedTopazeTxt {
+
+    font-size: 2em;
+
+}
+
+.died.active .btn {
+
+    cursor: pointer;
+    
+}

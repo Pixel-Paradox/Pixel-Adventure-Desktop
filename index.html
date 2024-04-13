@@ -10,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="Site/Css/menu.css">
         <link rel="stylesheet" type="text/css" href="Site/Css/dialogue.css">
         <link rel="stylesheet" type="text/css" href="Site/Css/carte.css">
+        <link rel="stylesheet" type="text/css" href="Site/Css/died.css">
         <link rel="stylesheet" type="text/css" href="Site/Css/respensive.css">
 
         <script defer src="Site/Js/JsSite/menu.js"></script>
@@ -21,7 +22,11 @@
         <script defer src="Site/Js/JsGame/classes.js"></script>
         <script defer src="Site/Js/JsGame/collisions.js"></script>
         <script defer src="Site/Js/JsGame/sprite.js"></script>
+        <script defer src="Site/Js/JsGame/topaze.js"></script>
+        <script defer src="Site/Js/JsGame/Speed.js"></script>
+        <script defer src="Site/Js/JsGame/heart.js"></script>
         <script defer src="Site/Js/JsGame/dialogue.js"></script>
+        <script defer src="Site/Js/JsGame/carte.js"></script>
         <script defer src="Site/Js/JsGame/play.js"></script>
 
         <link rel="icon" href="Site/ImageSite/pixel-adventure-desktop.png" type="image/png">
@@ -39,6 +44,7 @@
             </div>
             <div class="musique btn">Musique activé</div>
             <div class="ecran btn">Plein écran désactivé</div>
+            <div class="btn recommencer">Recommencez</div>
             <div class="touche btn">
                 <p>q = ouvrir le menu</p>
                 <p>e = ouvrir les cartes</p>
@@ -49,12 +55,7 @@
             </div>
         </div>
 
-        <div class="carte">
-            <div>
-                <p>Amarantis</p>
-                <img class="carteImg" src="Site/ImageGame/village.png" alt="Village">
-            </div>
-        </div>
+        <div class="carte"></div>
 
         <div class="dialogue">
             <p class="name"></p>
@@ -63,9 +64,33 @@
 
         <div class="element">
             <div class="sectionElement">
-                <img class="imgElement imgTopaze" src="Site/ImageSite/topaze.png" alt="Topaze">
+                <img class="imgElement" src="Site/ImageSite/heart.png" alt="Heart">
+                <p class="nbElement nbHeart"></p>
+            </div>
+            <div class="sectionElement">
+                <img class="imgElement" src="Site/ImageSite/topaze.png" alt="Topaze">
                 <p class="nbElement nbTopaze"></p>
             </div>
+            <div class="sectionElement">
+                <img class="imgElement" src="Site/ImageSite/potionHeart.png" alt="PotionHeart">
+                <p class="nbElement nbPotionHeart"></p>
+            </div>
+            <div class="sectionElement">
+                <img class="imgElement" src="Site/ImageSite/potionSpeed.png" alt="PotionSpeed">
+                <p class="nbElement nbPotionSpeed"></p>
+            </div>
+        </div>
+
+        <div class="died">
+            <p class="diedTxt">Vous êtes mort.</p>
+
+            <div class="diedTopaze">
+                <p class="diedTopazeTxt">-2 topazes</p>
+                <img src="Site/ImageSite/topaze.png" alt="Topaze">
+            </div>
+
+            <div class="btn reprendreDied">Reprendre</div>
+            <div class="btn recommencer">Recommencez</div>
         </div>
 
         <canvas></canvas>

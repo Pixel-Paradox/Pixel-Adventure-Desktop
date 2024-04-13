@@ -29,6 +29,9 @@ dogImage.src = './Site/ImageGame/dog.png';
 const voyageurImage = new Image();
 voyageurImage.src = './Site/ImageGame/voyageur.png';
 
+const georasImage = new Image();
+georasImage.src = './Site/ImageGame/voyageur.png';
+
 // Map image
 
 const mapBackground = new Image();
@@ -61,6 +64,8 @@ const player = new Sprite({
         down: player1,
         left: player4,
         right: player3,
+        negHeart: player1,
+        posHeart: player2
     }
 })
 
@@ -89,6 +94,19 @@ const chef = {
             max: 4
         },
         image: chefImage
+    }),
+};
+
+const georas = {
+    sprite: new Sprite({
+        position: {
+            x: canvas.width / 2 - 250,
+            y: canvas.height / 2 + 950
+        },
+        frames: {
+            max: 4
+        },
+        image: georasImage
     }),
 };
 
@@ -125,8 +143,8 @@ const dog = {
 const voyageur = {
     sprite: new Sprite({
         position: {
-            x: canvas.width / 2 + 160,
-            y: canvas.height / 2 + 140
+            x: canvas.width / 2 - 200,
+            y: canvas.height / 2 + 750
         },
         frames: {
             max: 4
@@ -215,7 +233,7 @@ const villager1 = {
 };*/
 
 const villagersMap = [ragnerus, dog, voyageur];
-const villagersHome = [vagabond , chef];
+const villagersHome = [vagabond , chef, georas];
 
 const villagers = [...villagersMap, ...villagersHome];
 
