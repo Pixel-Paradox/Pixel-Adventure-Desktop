@@ -13,8 +13,10 @@ let heart = heartMax;
 
 function heartChange(heartLess) {
     if(playerSpeed === 3) {
-        if(heartLess > 0) {
-            heartLess = 0
+        if(heartLess < 0) {
+            heartLess = 0;
+        } else {
+            heart += heartLess;
         }
     } else {
         heart += heartLess;
