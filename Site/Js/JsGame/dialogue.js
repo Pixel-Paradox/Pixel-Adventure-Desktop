@@ -145,7 +145,11 @@ function keydialogue(villager) {
 
                 // Chef 3 dialogue
 
-                dialogueFunction("Chef d'Amarantis", "Vous êtes allez voir Georus ...Il vous a donné une potion de rapidité. Je pense que vous êtes près pour allé finir le périple avec le voyageur et sa vous permetteras peut-être de vous rémorer des souvenirs.");
+                dialogueFunction("Chef d'Amarantis", "Vous êtes allez voir Georus ...Il vous a donné une potion de rapidité. Je pense que vous êtes près pour allé finir le périple avec le voyageur et sa vous permetteras peut-être de vous rémorer des souvenirs, allez le voir.");
+
+                if(chefDialogue === 2) {
+                    voyageurDialogueNb = 1;
+                } 
 
                 chefDialogue = 3;
 
@@ -172,6 +176,17 @@ function keydialogue(villager) {
                     }
 
                     voyageurDialogue = 1;
+
+                } else
+
+                if(voyageurDialogueNb === 1) {
+
+                    // Voyageur 2 dialogue
+    
+                    dialogueFunction("Voyageur", "a");
+    
+                    voyageurDialogue = 2;
+    
                 }
 
             } else {
