@@ -19,7 +19,19 @@ function heartChange(heartLess) {
             heart += heartLess;
         }
     } else {
+
         heart += heartLess;
+
+        if(heartLess < 0) {
+            if (musique) {
+                soundDamage.play();
+            }
+        } else {
+            if (musique) {
+                soundDialogue.play();
+            }
+        }
+        
     }
 
     if(heart > heartMax) {
@@ -49,7 +61,7 @@ reprendreDied.onclick = function() {;
     menuKeys = false;
 
     if(!diedReprendre) {
-        heartChange(heartMax);
+        heart = heartMax;
         topazeChange(-2);
         diedReprendre = true;
     }

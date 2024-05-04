@@ -1,13 +1,16 @@
 let musiqueHome = new Audio('./Site/Music/home.mp3');
 let musiqueMap = new Audio('./Site/Music/map.mp3');
 let musiqueDied = new Audio('./Site/Music/died.mp3');
+
 let soundDialogue = new Audio('./Site/Music/soundDialogue.mp3');
+let soundDamage = new Audio('./Site/Music/soundDamage.mp3');
 
 let musiques = {
     musiqueHome,
     musiqueMap,
     soundDialogue,
     musiqueDied,
+    soundDamage
 };
 
 let adventureMusiques = {
@@ -34,6 +37,7 @@ musiqueMap.volume = 0.08;
 musiqueDied.volume = 0.08;
 
 soundDialogue.volume = 0.8;
+soundDamage.volume = 0.3;
 
 function remplacerMusique(musiqueChoice1) {
     for (let key in adventureMusiques) {
