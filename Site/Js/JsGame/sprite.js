@@ -232,7 +232,38 @@ const villager1 = {
     }),
 };*/
 
-const villagersMap = [ragnerus, dog, voyageur];
+const enemyImages = [];
+
+const enemyPositions = [
+    { x: -800, y: 530 },
+    { x: -1200, y: -690 }
+];
+
+for (let i = 0; i < enemyPositions.length; i++) {
+    const enemyImage = new Image();
+    enemyImage.src = './Site/ImageGame/vagabond.png';
+    enemyImages.push(enemyImage);
+}
+
+const enemies = [];
+
+for (let i = 0; i < enemyPositions.length; i++) {
+    const enemy = {
+        sprite: new Sprite({
+            position: {
+                x: canvas.width / 2 + enemyPositions[i].x,
+                y: canvas.height / 2 + enemyPositions[i].y
+            },
+            frames: {
+                max: 4
+            },
+            image: enemyImages[i]
+        })
+    };
+    enemies.push(enemy);
+}
+
+const villagersMap = [ragnerus, dog, voyageur, ...enemies];
 const villagersHome = [vagabond , chef, georas];
 
 const villagers = [...villagersMap, ...villagersHome];

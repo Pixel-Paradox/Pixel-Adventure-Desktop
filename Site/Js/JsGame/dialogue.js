@@ -183,12 +183,12 @@ function keydialogue(villager) {
 
                     // Voyageur 2 dialogue
     
-                    dialogueFunction("Voyageur", "Ah c'est bon le chef du village à enfin accetpetr que tu viennes gravire la montagne avec moi. Retrouves moi au début de la montagne au nord");
+                    dialogueFunction("Voyageur", "Ah c'est bon le chef du village à enfin accepté que tu viennes gravire la montagne avec moi. Retrouves moi au début de la montagne au nord.");
 
                     if(voyageurDialogue === 1) {
                         setTimeout(function() {
-                            voyageur.sprite.position.y -= 10;
-                            voyageur.sprite.position.x -= 10;
+                            voyageur.sprite.position.y -= 910;
+                            voyageur.sprite.position.x += 370;
                             voyageurDialogueNb = 2;
                         }, 2000);
                     }
