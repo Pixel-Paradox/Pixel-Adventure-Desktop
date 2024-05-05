@@ -242,7 +242,7 @@ function keydialogue(villager) {
 
                 // Ragnerus 1 dialogue
 
-                dialogueFunction("Ragnerus", "Bonjour, je vois que vous êtes nouveau. Ici, c'est le village d'Amarantis. J'habite ici, ma maison est juste a coté je m'appelle Ragnerus. Le vagabond vous a ramené à l'Hôpital du Village. Il vous à trouvez dans la forêt. Vous êtes resté longtemps. Le vagabond est bizarre... il ne parle avec personne... on ne le connaît pas tellement... Ce n'est pas un habitant d'Amarantis. Il habite dans la forêt à l'ouest, c'est un forêt dangereuse et j'allais oublier vous pouvez me rendre un service mon chien s'est perdu depuis plus de 2 jours essayez de le retrouver s'il vous plait, je vous donnerez une petite récompense.");
+                dialogueFunction("Ragnerus", "Bonjour, je vois que vous êtes nouveau. Ici, c'est le village d'Amarantis. J'habite ici, ma maison est juste a coté je m'appelle Ragnerus. Le vagabond vous a ramené à l'Hôpital du Village. Il vous à trouvez dans la forêt. Vous êtes resté longtemps. Le vagabond est bizarre... il ne parle avec personne... on ne le connaît pas tellement... Ce n'est pas un habitant d'Amarantis. Il habite dans la forêt à l'ouest, c'est un forêt dangereuse et j'allais oublier vous pouvez me rendre un service mon chien s'est perdu depuis plus de 2 jours essayez de le retrouver s'il vous plait, je vous donnerez une petite récompense mais faite attention car il mord.");
 
                 ragnerusDialogue = 1;
 
@@ -255,7 +255,7 @@ function keydialogue(villager) {
                 dialogueFunction("Ragnerus", "Merci d'avoir retrouvé mon chien. J'avais si peur pour lui. Il vous a griffé, je vais mieux l'éduquer. Pour te remercier de l'avoir ramené je te donne 3 topazes.");
                 
                 if(ragnerusDialogue === 1) {
-                    topazeChange(3)
+                    topazeChange(3);
                 }
 
                 ragnerusDialogue = 2;

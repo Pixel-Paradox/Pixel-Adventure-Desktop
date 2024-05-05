@@ -26,6 +26,8 @@ let carteKeys = false;
 
 let base = "home";
 
+let nbEnemiesPassed = 0
+
 function animate() {
     window.requestAnimationFrame(animate);
 
@@ -42,6 +44,10 @@ function animate() {
         villagers.forEach(villager => {
             villager.sprite.movingVillager = false;
         })
+
+        enemies.forEach(enemy => {
+            enemy.sprite.movingEnemy = false;
+        })
     }
 
     let moving = true;
@@ -50,6 +56,7 @@ function animate() {
         diedReprendre = false;
 
         if (musique) {
+            deletSound();
             remplacerMusique(musiqueDied);
         }
 
@@ -84,6 +91,10 @@ function animate() {
             villager.sprite.draw();
         });
 
+        enemiesMap.forEach(enemy => {
+            enemy.sprite.draw();
+        });
+
         foregroundMap.draw();
 
         player.moving = false;
@@ -95,7 +106,35 @@ function animate() {
         frontOfHomes.forEach(frontOfHome => {
             frontOfHome.draw()
         });
+        
+        enemies1.forEach(enemy => {
+            const direction = Math.floor(nbEnemiesPassed / enemy.range) % 2 === 0 ? 1 : -1;
+            const distance = (nbEnemiesPassed % enemy.range) * direction;
+            const speed = enemy.speed * (20 / enemy.range);
+            
+            enemy.sprite.position.x += speed * distance;
+            enemy.sprite.movingEnemy = true;
+        
+            nbEnemiesPassed++;
+        });
 
+        enemiesMap.forEach(enemy => {
+            if (
+                rectangularCollision({
+                    rectangle1: player,
+                    rectangle2: {...enemy.sprite, position: {
+                        x: enemy.sprite.position.x,
+                        y: enemy.sprite.position.y
+                    }}
+                })
+            ) {
+                
+                moving = false;
+                player.moving = false;
+                heartChange(-1)
+            }
+        });
+        
         if(!menuKeys && !carteKeys) {
             if (keys.w.pressed && lastKey === "w") {
 
@@ -140,6 +179,8 @@ function animate() {
                         keydialogue(villager);
                     }
                 });
+
+
 
                 // Home
 
@@ -609,11 +650,8 @@ window.addEventListener("blur", function() {
     keys.s.pressed = false;
     keys.d.pressed = false;
     lastKey = "";
-
 });
 
 window.addEventListener("focus", function() {
     lastKey = "";
-
-
 });

@@ -69,7 +69,7 @@ const player = new Sprite({
     }
 })
 
-// Pnj creation
+// Villager creation
 
 const vagabond = {
     sprite: new Sprite({
@@ -153,122 +153,57 @@ const voyageur = {
     }),
 };
 
-/*
-const villager1 = {
-    sprite: new Sprite({
-        position: {
-            x: canvas.width / 2 + 90,
-            y: canvas.height / 2 + 20
-        },
-        frames: {
-            max: 4
-        },
-        image: villagerImage1
-    }),
-};
-
-const villager1 = {
-    sprite: new Sprite({
-        position: {
-            x: canvas.width / 2 + 90,
-            y: canvas.height / 2 + 20
-        },
-        frames: {
-            max: 4
-        },
-        image: villagerImage1
-    }),
-};
-
-const villager1 = {
-    sprite: new Sprite({
-        position: {
-            x: canvas.width / 2 + 90,
-            y: canvas.height / 2 + 20
-        },
-        frames: {
-            max: 4
-        },
-        image: villagerImage1
-    }),
-};
-
-const villager1 = {
-    sprite: new Sprite({
-        position: {
-            x: canvas.width / 2 + 90,
-            y: canvas.height / 2 + 20
-        },
-        frames: {
-            max: 4
-        },
-        image: villagerImage1
-    }),
-};
-
-const villager1 = {
-    sprite: new Sprite({
-        position: {
-            x: canvas.width / 2 + 90,
-            y: canvas.height / 2 + 20
-        },
-        frames: {
-            max: 4
-        },
-        image: villagerImage1
-    }),
-};
-
-const villager1 = {
-    sprite: new Sprite({
-        position: {
-            x: canvas.width / 2 + 90,
-            y: canvas.height / 2 + 20
-        },
-        frames: {
-            max: 4
-        },
-        image: villagerImage1
-    }),
-};*/
-
-const enemyImages = [];
-
-const enemyPositions = [
-    { x: -800, y: 530 },
-    { x: -1200, y: -690 }
-];
-
-for (let i = 0; i < enemyPositions.length; i++) {
-    const enemyImage = new Image();
-    enemyImage.src = './Site/ImageGame/vagabond.png';
-    enemyImages.push(enemyImage);
-}
-
-const enemies = [];
-
-for (let i = 0; i < enemyPositions.length; i++) {
-    const enemy = {
-        sprite: new Sprite({
-            position: {
-                x: canvas.width / 2 + enemyPositions[i].x,
-                y: canvas.height / 2 + enemyPositions[i].y
-            },
-            frames: {
-                max: 4
-            },
-            image: enemyImages[i]
-        })
-    };
-    enemies.push(enemy);
-}
-
-const villagersMap = [ragnerus, dog, voyageur, ...enemies];
+const villagersMap = [ragnerus, dog, voyageur];
 const villagersHome = [vagabond , chef, georas];
 
 const villagers = [...villagersMap, ...villagersHome];
 
 const villagersMovable = villagers.map(villager => villager.sprite);
+
+
+
+// Enemies creation
+
+const enemyImages1 = [];
+
+const enemyPositions1 = [
+    { x: 80, y: 80 },
+    { x: 150, y: 150 }
+];
+
+const enemySpeeds = [0.08, 0.1];
+const enemyRanges = [200, 100];
+
+for (let i = 0; i < enemyPositions1.length; i++) {
+    const enemyImage1 = new Image();
+    enemyImage1.src = './Site/ImageGame/vagabond.png';
+    enemyImages1.push(enemyImage1);
+}
+
+const enemies1 = [];
+
+for (let i = 0; i < enemyPositions1.length; i++) {
+    const enemy1 = {
+        sprite: new Sprite({
+            position: {
+                x: canvas.width / 2 + enemyPositions1[i].x,
+                y: canvas.height / 2 + enemyPositions1[i].y
+            },
+            frames: {
+                max: 4
+            },
+            image: enemyImages1[i]
+        }),
+        speed: enemySpeeds[i],
+        range: enemyRanges[i]
+    };
+    enemies1.push(enemy1);
+}
+const enemiesMap = [...enemies1];
+
+const enemies = [...enemiesMap];
+
+const enemiesMovable = enemies.map(enemy => enemy.sprite);
 
 // Map creation
 
@@ -307,5 +242,5 @@ const foregroundHome = new Sprite({
 })
 
 const movable = [backgroundMap , foregroundMap, ...mapOfCollisions,
-    ...frontOfHomes, ...villagersMovable,
+    ...frontOfHomes, ...villagersMovable, ...enemiesMovable,
     backgroundHome, foregroundHome, ...homeOfCollisions];

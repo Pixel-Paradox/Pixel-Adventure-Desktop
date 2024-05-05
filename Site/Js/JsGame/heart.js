@@ -11,34 +11,43 @@ let heartMax = 3;
 
 let heart = heartMax;
 
+let couldown = 0;
+
 function heartChange(heartLess) {
-    if(playerSpeed === 3) {
-        if(heartLess < 0) {
+    let currentTime = Date.now();
+
+    if (playerSpeed === 3) {
+        if (heartLess < 0) {
             heartLess = 0;
-        } else {
-            heart += heartLess;
         }
     } else {
+        if (heartLess < 0) {
+            if (currentTime - couldown >= 2000) {
 
-        heart += heartLess;
+                couldown = currentTime;
 
-        if(heartLess < 0) {
-            if (musique) {
-                soundDamage.play();
+                //player.image = player.sprites.up;
+
+                heart += heartLess;
+
+                if (musique) {
+                    soundDamage.play();
+                }
             }
         } else {
+            heart += heartLess;
+
             if (musique) {
                 soundDialogue.play();
             }
         }
-        
     }
 
-    if(heart > heartMax) {
+    if (heart > heartMax) {
         heart = heartMax;
     }
-    
-    if(heart <= 0) {
+
+    if (heart <= 0) {
         heart = 0;
     }
 }

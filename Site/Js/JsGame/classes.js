@@ -27,7 +27,7 @@ class Sprite {
         );
         
 
-        if(this.moving || this.movingVillager) {
+        if(this.moving || this.movingVillager || this.movingEnemy) {
             if(this.frames.max > 1) {
                 this.frames.elapsed++;
             }
