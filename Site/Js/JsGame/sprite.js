@@ -165,6 +165,7 @@ const villagersMovable = villagers.map(villager => villager.sprite);
 // Enemies creation
 
 const enemyImages1 = [];
+const enemyImages2 = [];
 
 const enemyPositions1 = [
     { x: 80, y: 80 },
@@ -176,8 +177,11 @@ const enemyRanges = [200, 100];
 
 for (let i = 0; i < enemyPositions1.length; i++) {
     const enemyImage1 = new Image();
-    enemyImage1.src = './Site/ImageGame/vagabond.png';
+    const enemyImage2 = new Image();
+    enemyImage1.src = './Site/ImageGame/player3.png';
+    enemyImage2.src = './Site/ImageGame/player4.png';
     enemyImages1.push(enemyImage1);
+    enemyImages2.push(enemyImage2);
 }
 
 const enemies1 = [];
@@ -189,16 +193,21 @@ for (let i = 0; i < enemyPositions1.length; i++) {
                 x: canvas.width / 2 + enemyPositions1[i].x,
                 y: canvas.height / 2 + enemyPositions1[i].y
             },
+            image: enemyImages1[i],
             frames: {
                 max: 4
             },
-            image: enemyImages1[i]
+            sprites: {
+                up: enemyImages1[i],
+                down: enemyImages2[i]
+            }
         }),
         speed: enemySpeeds[i],
         range: enemyRanges[i]
     };
     enemies1.push(enemy1);
 }
+
 const enemiesMap = [...enemies1];
 
 const enemies = [...enemiesMap];

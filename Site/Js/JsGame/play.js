@@ -111,6 +111,12 @@ function animate() {
             const direction = Math.floor(nbEnemiesPassed / enemy.range) % 2 === 0 ? 1 : -1;
             const distance = (nbEnemiesPassed % enemy.range) * direction;
             const speed = enemy.speed * (20 / enemy.range);
+
+            if(direction > 0) {
+                enemy.sprite.image = enemy.sprite.sprites.up;
+            } else {
+                enemy.sprite.image = enemy.sprite.sprites.down;
+            }
             
             enemy.sprite.position.x += speed * distance;
             enemy.sprite.movingEnemy = true;
