@@ -164,55 +164,64 @@ const villagersMovable = villagers.map(villager => villager.sprite);
 
 // Enemies creation
 
-const enemyImages1 = [];
-const enemyImages2 = [];
-
-const enemyPositions1 = [
-    { x: 80, y: 80 },
-    { x: 150, y: 150 }
+const enemyImages = [
+    ["./Site/ImageGame/goat3.png", "./Site/ImageGame/goat4.png"],
+    ["./Site/ImageGame/goat1.png", "./Site/ImageGame/goat2.png"],
+    ["./Site/ImageGame/goat3.png", "./Site/ImageGame/goat4.png"],
+    ["./Site/ImageGame/goat3.png", "./Site/ImageGame/goat4.png"],
+    ["./Site/ImageGame/goat1.png", "./Site/ImageGame/goat2.png"],
+    ["./Site/ImageGame/goat1.png", "./Site/ImageGame/goat2.png"]
 ];
 
-const enemySpeeds = [0.08, 0.1];
-const enemyRanges = [200, 100];
+const enemyPositions = [
+    { x: 180, y: -230 },
+    { x: 360, y: -430 },
+    { x: -50, y: -430 },
+    { x: -600, y: -800 },
+    { x: 100, y: -730 },
+    { x: -90, y: -930 },
+];
 
-for (let i = 0; i < enemyPositions1.length; i++) {
-    const enemyImage1 = new Image();
-    const enemyImage2 = new Image();
-    enemyImage1.src = './Site/ImageGame/player3.png';
-    enemyImage2.src = './Site/ImageGame/player4.png';
-    enemyImages1.push(enemyImage1);
-    enemyImages2.push(enemyImage2);
-}
+const enemySpeeds = [0.2, 0.07, 0.1, 0.4, 0.07, 0.06];
+const enemyRanges = [600, 550, 690, 500, 900, 550];
+const enemyXY = ["x", "y", "x", "x", "y", "y"];
 
 const enemies1 = [];
 
-for (let i = 0; i < enemyPositions1.length; i++) {
+for (let i = 0; i < enemyPositions.length; i++) {
+    const [image1, image2] = enemyImages[i].map(src => {
+        const img = new Image();
+        img.src = src;
+        return img;
+    });
+
     const enemy1 = {
         sprite: new Sprite({
             position: {
-                x: canvas.width / 2 + enemyPositions1[i].x,
-                y: canvas.height / 2 + enemyPositions1[i].y
+                x: canvas.width / 2 + enemyPositions[i].x,
+                y: canvas.height / 2 + enemyPositions[i].y
             },
-            image: enemyImages1[i],
-            frames: {
-                max: 4
-            },
-            sprites: {
-                up: enemyImages1[i],
-                down: enemyImages2[i]
-            }
+            image: image1,
+            frames: { max: 4 },
+            sprites: { up: image1, down: image2 },
         }),
         speed: enemySpeeds[i],
-        range: enemyRanges[i]
+        range: enemyRanges[i],
+        xy: enemyXY[i]
     };
+
     enemies1.push(enemy1);
 }
 
 const enemiesMap = [...enemies1];
-
 const enemies = [...enemiesMap];
-
 const enemiesMovable = enemies.map(enemy => enemy.sprite);
+
+
+
+
+
+const spritesCollisionsMap = [...enemiesMap, ...villagersMap];
 
 // Map creation
 
