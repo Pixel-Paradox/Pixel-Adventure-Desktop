@@ -22,6 +22,7 @@
         <script defer src="Site/Js/JsGame/classes.js"></script>
         <script defer src="Site/Js/JsGame/collisions.js"></script>
         <script defer src="Site/Js/JsGame/sprite.js"></script>
+        <script defer src="Site/Js/JsGame/progress.js"></script>
         <script defer src="Site/Js/JsGame/topaze.js"></script>
         <script defer src="Site/Js/JsGame/speed.js"></script>
         <script defer src="Site/Js/JsGame/heart.js"></script>
@@ -46,12 +47,23 @@
             <div class="ecran btn">Plein écran désactivé</div>
             <div class="btn recommencer">Recommencez</div>
             <div class="touche btn">
+                <div class="progressBlock">
+                    <p>Pourcentage du jeu fini:  <p class="progressScore">0</p>%</p>
+                </div>
+                <div class="progressBarBlock">
+                    <div class="progressBar"></div>
+                    <div class="progressBar"></div>
+                </div>
+            </div>
+            <div class="touche btn">
                 <p>q = ouvrir le menu</p>
-                <p>e = ouvrir les cartes</p>
                 <p>w = avancer</p>
                 <p>s = reculer</p>
-                <p>a = aller à gauche</p>
-                <p>d = aller à droite</p>
+                <p>a = se deplacer à gauche</p>
+                <p>d = se deplacer à droite</p>
+                <p>e = ouvrir les cartes</p>
+                <p>f = boire les potions de rapidité</p>
+                <p>r = boire les potions de régénération</p>
             </div>
         </div>
 

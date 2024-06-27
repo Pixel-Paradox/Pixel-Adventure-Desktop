@@ -1,13 +1,3 @@
-@media screen and (max-width: 550px) {
-    .btn {
-        width: 300px;
-    }
-    
-    .inputSize {
-        width: 140px;
-    }
-}
-
 @media screen and (max-height: 550px) {
     .dialogue {
         font-size: 1.85vh;

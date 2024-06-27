@@ -155,12 +155,8 @@ const voyageur = {
 
 const villagersMap = [ragnerus, dog, voyageur];
 const villagersHome = [vagabond , chef, georas];
-
 const villagers = [...villagersMap, ...villagersHome];
-
 const villagersMovable = villagers.map(villager => villager.sprite);
-
-
 
 // Enemies creation
 
@@ -222,6 +218,7 @@ const enemiesMovable = enemies.map(enemy => enemy.sprite);
 
 
 const spritesCollisionsMap = [...enemiesMap, ...villagersMap];
+const spritesCollisionsHome = [...villagersHome];
 
 // Map creation
 

@@ -31,9 +31,9 @@
     display: flex;            
     justify-content: center;    
     align-items: center; 
-    height: 40px;
+    height: max-content;
     border-radius: 10px;
-    padding: 30px;
+    padding: 20px;
     background-color: rgba(255, 255, 255, 0.325);
     color: white;
     font-size: 1.5em;
@@ -57,8 +57,7 @@
  
 .btn:hover, .inputSize:focus {
 
-    height: 80px;
-
+    scale: 1.1;
 }
 
 .size {
@@ -68,17 +67,50 @@
 
 }
 
+.progressBlock {
+
+    display: flex;
+    gap: 5px;
+
+}
+
+.progressBarBlock {
+
+    display: flex;
+    flex-direction: column;
+    position: relative;  
+
+}
+
+.progressBar {
+
+    width: 0;
+    height: 15px;
+    border-radius: 7px;
+    background-color: green;
+
+}
+
+.progressBar:nth-child(2) {
+
+    background-color: gray;
+    z-index: -1;
+    width: 350px;
+    margin-top: -15px; 
+
+}
+
 .touche {
 
     flex-direction: column;          
     gap: 20px;
-    height: 300px; 
+    height: max-content;
 
 }
 
 .touche:hover {  
 
-    height: 300px;
+    height: max-content;
 
 }
 

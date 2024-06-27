@@ -82,6 +82,7 @@ function keydialogue(villager) {
             dialogueFunction("Le vagabond", "Hé, vous là-bas. Vous vous êtes réveillé, approchez un peu plus. Tu ne sais pas ce qu'il s'est passé... Tu ne connais pas la vérité... je ne peux pas trop en dire... trouverez-vous par vous-même la vérité que vous cherchez... maintenant je dois partir.");
     
             if(vagabondDialogue === 0) {
+                progressChange(25);
                 setTimeout(function() {
                     vagabond.sprite.position.y -= 100;
                     vagabond.sprite.position.x -= 1550;
@@ -186,6 +187,7 @@ function keydialogue(villager) {
                     dialogueFunction("Voyageur", "Ah c'est bon le chef du village à enfin accepté que tu viennes gravire la montagne avec moi. Retrouves moi au début de la montagne au nord.");
 
                     if(voyageurDialogue === 1) {
+                        progressChange(50);
                         setTimeout(function() {
                             voyageur.sprite.position.y -= 910;
                             voyageur.sprite.position.x += 370;
@@ -256,6 +258,7 @@ function keydialogue(villager) {
                 
                 if(ragnerusDialogue === 1) {
                     topazeChange(3);
+                    progressChange(25);
                 }
 
                 ragnerusDialogue = 2;
