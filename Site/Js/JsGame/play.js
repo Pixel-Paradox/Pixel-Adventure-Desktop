@@ -59,18 +59,14 @@ function animate() {
 
         if (enemy.xy === "x") {
             enemy.sprite.position.x += speed * distance;
-            if (direction > 0) {
-                enemy.sprite.image = enemy.sprite.sprites.up;
-            } else {
-                enemy.sprite.image = enemy.sprite.sprites.down;
-            }
         } else if (enemy.xy === "y") {
             enemy.sprite.position.y += speed * distance;
-            if (direction > 0) {
-                enemy.sprite.image = enemy.sprite.sprites.up;
-            } else {
-                enemy.sprite.image = enemy.sprite.sprites.down;
-            }
+        }
+
+        if (direction > 0) {
+            enemy.sprite.image = enemy.sprite.sprites.up;
+        } else {
+            enemy.sprite.image = enemy.sprite.sprites.down;
         }
         
         enemy.sprite.movingEnemy = true;
