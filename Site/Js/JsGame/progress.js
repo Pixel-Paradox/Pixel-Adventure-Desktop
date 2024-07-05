@@ -10,5 +10,7 @@ function progressChange(progressLess) {
     if(progress <= 100) {
         progressBar.style.width = progressInPixels + "px";
         progressScore.textContent = progress;
+    } else {
+        console.log("Trop de pourcent.");
     }
 }

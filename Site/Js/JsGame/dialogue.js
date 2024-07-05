@@ -82,10 +82,10 @@ function keydialogue(villager) {
             dialogueFunction("Le vagabond", "Hé, vous là-bas. Vous vous êtes réveillé, approchez un peu plus. Tu ne sais pas ce qu'il s'est passé... Tu ne connais pas la vérité... je ne peux pas trop en dire... trouverez-vous par vous-même la vérité que vous cherchez... maintenant je dois partir.");
     
             if(vagabondDialogue === 0) {
-                progressChange(25);
                 setTimeout(function() {
                     vagabond.sprite.position.y -= 100;
                     vagabond.sprite.position.x -= 1550;
+                    progressChange(25);
                     vagabondDialogueNb = 1;
                 }, 20000);
             }
@@ -126,6 +126,7 @@ function keydialogue(villager) {
 
                 if(chefDialogue === 0) {
                     topazeChange(10);
+                    progressChange(8);
                 }
 
                 chefDialogue = 1;
@@ -138,6 +139,10 @@ function keydialogue(villager) {
 
                 dialogueFunction("Chef d'Amarantis", "Bonjour, Vous avez parlé avec le voyageur Hesther ...Vous allez l'aidé a finir son périple. Vous n'avez pas encore repris tout votre energie, allez d'abbord jusqu'a la maison de Georas Il est très sympa il vous expliqueras comment sont les montagnes il aimes bien faire des prommenades et quand vous reviendrez j'estimerais que vous êtes assé en forme pour partir avec le voyageur.");
 
+                if(chefDialogue === 1) {;
+                    progressChange(8);
+                }
+
                 chefDialogue = 2;
 
             } else
@@ -149,6 +154,7 @@ function keydialogue(villager) {
                 dialogueFunction("Chef d'Amarantis", "Vous êtes allez voir Georus ...Il vous a donné une potion de rapidité. Je pense que vous êtes près pour allé finir le périple avec le voyageur et sa vous permetteras peut-être de vous rémorer des souvenirs, allez le voir.");
 
                 if(chefDialogue === 2) {
+                    progressChange(8);
                     voyageurDialogueNb = 1;
                 } 
 
@@ -173,6 +179,7 @@ function keydialogue(villager) {
                     dialogueFunction("Voyageur", "Salut ! Enfin je peux te tutoyer ? ...D'accord, alors on se tutoie. Je m'appelle Hesther. Je suis un voyageur et un aventurier, je viens d'un autre village très au sud. Je suis en train de faire un long périple, j'ai commencé par le Sud-Ouest et je prends une petite pause ici à Amarantis. Je dois finir au nord-Ouest mais je voulais te parler car pour finir mon voyage je dois passer par la forêt. Mais tout le monde m'a dit que c'était très dangereux et les habitants ont tous peur depuis qu'un villageois n'y est jamais revenu. Mais toi, je sens en toi que tu as du courage. Voudrais-tu bien m'accompagner pour finir mon périple ? ...Super, je te récompenserai à la fin de mon voyage. Je vais commencer par monter sur la montagne pour voir la vue et voir la forêt de haut. Juste je dois attendre que le chef du village accepte que tu parte avec moi, on commencera en montant la montagne au nord-est. Vas parler au chef d'Amarantis pour savoir si il est daccord qu tu parte avec moi.");
 
                     if(voyageurDialogue === 0) {
+                        progressChange(8);
                         chefDialogueNb = 1;
                     }
 
@@ -187,10 +194,10 @@ function keydialogue(villager) {
                     dialogueFunction("Voyageur", "Ah c'est bon le chef du village à enfin accepté que tu viennes gravire la montagne avec moi. Retrouves moi au début de la montagne au nord.");
 
                     if(voyageurDialogue === 1) {
-                        progressChange(50);
                         setTimeout(function() {
                             voyageur.sprite.position.y -= 910;
                             voyageur.sprite.position.x += 370;
+                            progressChange(10);
                             voyageurDialogueNb = 2;
                         }, 2000);
                     }
@@ -221,6 +228,7 @@ function keydialogue(villager) {
 
                     if(georasDialogue === 0) {
                         potionSpeedChange(1);
+                        progressChange(8);
                         chefDialogueNb = 2;
                     }
 
@@ -246,6 +254,10 @@ function keydialogue(villager) {
 
                 dialogueFunction("Ragnerus", "Bonjour, je vois que vous êtes nouveau. Ici, c'est le village d'Amarantis. J'habite ici, ma maison est juste a coté je m'appelle Ragnerus. Le vagabond vous a ramené à l'Hôpital du Village. Il vous à trouvez dans la forêt. Vous êtes resté longtemps. Le vagabond est bizarre... il ne parle avec personne... on ne le connaît pas tellement... Ce n'est pas un habitant d'Amarantis. Il habite dans la forêt à l'ouest, c'est un forêt dangereuse et j'allais oublier vous pouvez me rendre un service mon chien s'est perdu depuis plus de 2 jours essayez de le retrouver s'il vous plait, je vous donnerez une petite récompense mais faite attention car il mord.");
 
+                if(ragnerusDialogue === 0) {
+                    progressChange(8);
+                }
+
                 ragnerusDialogue = 1;
 
             } else
@@ -258,7 +270,7 @@ function keydialogue(villager) {
                 
                 if(ragnerusDialogue === 1) {
                     topazeChange(3);
-                    progressChange(25);
+                    progressChange(9);
                 }
 
                 ragnerusDialogue = 2;
@@ -286,6 +298,7 @@ function keydialogue(villager) {
                         setTimeout(function() {
                             dog.sprite.position.y -= -970;
                             dog.sprite.position.x -= -230;
+                            progressChange(8);
                             ragnerusDialogueNb = 1;
                         }, 11000);
                     }
