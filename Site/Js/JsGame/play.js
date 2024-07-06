@@ -74,20 +74,6 @@ function animate() {
         nbEnemiesPassed++;
     });
 
-    enemiesMap.forEach(enemy => {
-        if (
-            rectangularCollision({
-                rectangle1: player,
-                rectangle2: {...enemy.sprite, position: {
-                    x: enemy.sprite.position.x,
-                    y: enemy.sprite.position.y
-                }}
-            })
-        ) {
-            heartChange(-1)
-        }
-    });
-
     if(heart <= 0) {
         diedReprendre = false;
 
@@ -141,6 +127,20 @@ function animate() {
 
         frontOfHomes.forEach(frontOfHome => {
             frontOfHome.draw()
+        });
+
+        enemiesMap.forEach(enemy => {
+            if (
+                rectangularCollision({
+                    rectangle1: player,
+                    rectangle2: {...enemy.sprite, position: {
+                        x: enemy.sprite.position.x,
+                        y: enemy.sprite.position.y
+                    }}
+                })
+            ) {
+                heartChange(-1)
+            }
         });
         
         if(!menuKeys && !carteKeys) {
@@ -255,6 +255,20 @@ function animate() {
                     }
                 })
 
+                villagersMap.forEach(villager => {
+                    if (
+                        rectangularCollision({
+                            rectangle1: player,
+                            rectangle2: {...villager.sprite, position: {
+                                x: villager.sprite.position.x,
+                                y: villager.sprite.position.y - 2
+                            }}
+                        })
+                    ) {
+                        keydialogue(villager);
+                    }
+                });
+
                 if(moving) {
                     movable.forEach((movable) => {
                         movable.position.y -= playerSpeed;
@@ -295,6 +309,20 @@ function animate() {
                     }
                 })
 
+                villagersMap.forEach(villager => {
+                    if (
+                        rectangularCollision({
+                            rectangle1: player,
+                            rectangle2: {...villager.sprite, position: {
+                                x: villager.sprite.position.x + 2,
+                                y: villager.sprite.position.y
+                            }}
+                        })
+                    ) {
+                        keydialogue(villager);
+                    }
+                });
+
                 if(moving) {
                     movable.forEach((movable) => {
                         movable.position.x += playerSpeed;
@@ -334,6 +362,20 @@ function animate() {
                         }
                     }
                 })
+
+                villagersMap.forEach(villager => {
+                    if (
+                        rectangularCollision({
+                            rectangle1: player,
+                            rectangle2: {...villager.sprite, position: {
+                                x: villager.sprite.position.x - 2,
+                                y: villager.sprite.position.y
+                            }}
+                        })
+                    ) {
+                        keydialogue(villager);
+                    }
+                });
 
                 if(moving) {
                     movable.forEach((movable) => {
@@ -379,22 +421,31 @@ function animate() {
 
                 // Collision
 
-                for (let i = 0; i < homeOfCollisions.length; i++) {
-                    const boundary = homeOfCollisions[i];
-                    if(
-                        rectangularCollision({
-                            rectangle1: player,
-                            rectangle2: {...boundary, position: {
-                                x: boundary.position.x,
-                                y: boundary.position.y + 2
-                            }}
-                        })
-                    ){
-                        moving = false;
-                        player.moving = false;
-                        break;
+                spritesCollisionsHome.forEach(spriteCollisionsHome => {
+                    for (let i = 0; i < homeOfCollisions.length; i++) {
+                        const boundary = homeOfCollisions[i];
+                        if(
+                            rectangularCollision({
+                                rectangle1: player,
+                                rectangle2: {...boundary, position: {
+                                    x: boundary.position.x - 2,
+                                    y: boundary.position.y
+                                }}
+                            }) ||
+                            rectangularCollision({
+                                rectangle1: player,
+                                rectangle2: {...spriteCollisionsHome.sprite, position: {
+                                    x: spriteCollisionsHome.sprite.position.x - 2,
+                                    y: spriteCollisionsHome.sprite.position.y
+                                }}
+                            })
+                        ){
+                            moving = false;
+                            player.moving = false;
+                            break;
+                        }
                     }
-                }
+                })
 
                 // Villager
 
@@ -408,9 +459,6 @@ function animate() {
                             }}
                         })
                     ) {
-                        
-                        moving = false;
-                        player.moving = false;
 
                         keydialogue(villager);
                     }
@@ -429,7 +477,7 @@ function animate() {
 
                 // Collision
 
-                villagersHome.forEach(villager => {
+                spritesCollisionsHome.forEach(spriteCollisionsHome => {
                     for (let i = 0; i < homeOfCollisions.length; i++) {
                         const boundary = homeOfCollisions[i];
                         if(
@@ -439,12 +487,12 @@ function animate() {
                                     x: boundary.position.x,
                                     y: boundary.position.y - 2
                                 }}
-                            }) || 
+                            }) ||
                             rectangularCollision({
                                 rectangle1: player,
-                                rectangle2: {...villager.sprite, position: {
-                                    x: villager.sprite.position.x,
-                                    y: villager.sprite.position.y - 2
+                                rectangle2: {...spriteCollisionsHome.sprite, position: {
+                                    x: spriteCollisionsHome.sprite.position.x,
+                                    y: spriteCollisionsHome.sprite.position.y - 2
                                 }}
                             })
                         ){
@@ -475,6 +523,23 @@ function animate() {
                         break;
                     }
                 }
+
+                // Villager
+
+                villagersHome.forEach(villager => {
+                    if (
+                        rectangularCollision({
+                            rectangle1: player,
+                            rectangle2: {...villager.sprite, position: {
+                                x: villager.sprite.position.x,
+                                y: villager.sprite.position.y - 2
+                            }}
+                        })
+                    ) {
+
+                        keydialogue(villager);
+                    }
+                });
 
                 if(moving) {
                     movable.forEach((movable) => {
@@ -516,6 +581,22 @@ function animate() {
                     }
                 })
 
+                // Villager
+
+                villagersHome.forEach(villager => {
+                    if (
+                        rectangularCollision({
+                            rectangle1: player,
+                            rectangle2: {...villager.sprite, position: {
+                                x: villager.sprite.position.x + 2,
+                                y: villager.sprite.position.y
+                            }}
+                        })
+                    ) {
+                        keydialogue(villager);
+                    }
+                });
+
                 if(moving) {
                     movable.forEach((movable) => {
                         movable.position.x += playerSpeed;
@@ -555,6 +636,22 @@ function animate() {
                         }
                     }
                 })
+
+                // Villager
+
+                villagersHome.forEach(villager => {
+                    if (
+                        rectangularCollision({
+                            rectangle1: player,
+                            rectangle2: {...villager.sprite, position: {
+                                x: villager.sprite.position.x - 2,
+                                y: villager.sprite.position.y
+                            }}
+                        })
+                    ) {
+                        keydialogue(villager);
+                    }
+                });
 
                 if(moving) {
                     movable.forEach((movable) => {
@@ -603,10 +700,9 @@ window.addEventListener("keydown", function(e) {
             lastKey = "e";
 
             if(!menuKeys){
-                if (chefDialogue !== 0) {
+                if (chefDialogue > 0) {
                     carte.classList.toggle("active");
                     carteKeys = carte.classList.contains('active');
-                    carte.innerHTML = carteAmarantis;
                 }
             }
 

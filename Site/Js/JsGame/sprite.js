@@ -17,20 +17,28 @@ player4.src = './Site/ImageGame/player4.png';
 const vagabondImage = new Image();
 vagabondImage.src = './Site/ImageGame/vagabond.png';
 
-const ragnerusImage = new Image();
-ragnerusImage.src = './Site/ImageGame/ragnerus.png';
-
 const chefImage = new Image();
 chefImage.src = './Site/ImageGame/chef.png';
-
-const dogImage = new Image();
-dogImage.src = './Site/ImageGame/dog.png';
 
 const voyageurImage = new Image();
 voyageurImage.src = './Site/ImageGame/voyageur.png';
 
 const georasImage = new Image();
 georasImage.src = './Site/ImageGame/voyageur.png';
+
+// Quete secondaire
+
+const ragnerusImage = new Image();
+ragnerusImage.src = './Site/ImageGame/ragnerus.png';
+
+const dogImage = new Image();
+dogImage.src = './Site/ImageGame/dog.png';
+
+const librarianImage = new Image();
+librarianImage.src = './Site/ImageGame/voyageur.png';
+
+const cartographerImage = new Image();
+cartographerImage.src = './Site/ImageGame/voyageur.png';
 
 // Map image
 
@@ -153,8 +161,34 @@ const voyageur = {
     }),
 };
 
-const villagersMap = [ragnerus, dog, voyageur];
-const villagersHome = [vagabond , chef, georas];
+const librarian = {
+    sprite: new Sprite({
+        position: {
+            x: canvas.width / 2 - 250,
+            y: canvas.height / 2 + 700
+        },
+        frames: {
+            max: 4
+        },
+        image: librarianImage
+    }),
+};
+
+const cartographer = {
+    sprite: new Sprite({
+        position: {
+            x: canvas.width / 2 - 220,
+            y: canvas.height / 2 + 720
+        },
+        frames: {
+            max: 4
+        },
+        image: cartographerImage
+    }),
+};
+
+const villagersMap = [ragnerus, dog, voyageur, cartographer];
+const villagersHome = [vagabond , chef, georas, librarian];
 const villagers = [...villagersMap, ...villagersHome];
 const villagersMovable = villagers.map(villager => villager.sprite);
 

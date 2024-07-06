@@ -127,6 +127,7 @@ function keydialogue(villager) {
                 if(chefDialogue === 0) {
                     topazeChange(10);
                     progressChange(8);
+                    carte.innerHTML += carteAmarantis;
                 }
 
                 chefDialogue = 1;
@@ -180,6 +181,7 @@ function keydialogue(villager) {
 
                     if(voyageurDialogue === 0) {
                         progressChange(8);
+                        carte.innerHTML += carteMap;
                         chefDialogueNb = 1;
                     }
 

@@ -1,3 +1,11 @@
+@media screen and (max-height: 1150px) {
+    .menu {
+
+        height: 70vh;
+
+    }
+}
+
 @media screen and (max-height: 550px) {
     .dialogue {
         font-size: 1.85vh;
