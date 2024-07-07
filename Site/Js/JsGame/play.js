@@ -428,15 +428,15 @@ function animate() {
                             rectangularCollision({
                                 rectangle1: player,
                                 rectangle2: {...boundary, position: {
-                                    x: boundary.position.x - 2,
-                                    y: boundary.position.y
+                                    x: boundary.position.x,
+                                    y: boundary.position.y + 2
                                 }}
                             }) ||
                             rectangularCollision({
                                 rectangle1: player,
                                 rectangle2: {...spriteCollisionsHome.sprite, position: {
-                                    x: spriteCollisionsHome.sprite.position.x - 2,
-                                    y: spriteCollisionsHome.sprite.position.y
+                                    x: spriteCollisionsHome.sprite.position.x,
+                                    y: spriteCollisionsHome.sprite.position.y + 2
                                 }}
                             })
                         ){
@@ -675,8 +675,10 @@ window.addEventListener("keydown", function(e) {
             if(!menuKeys){
                 if(PotionSpeed > 0 && playerSpeed === 2) {
                     playerSpeed = 3;
+                    invincible = true;
                     setTimeout(function() {
                         playerSpeed = 2;
+                        invincible = false;
                     }, 10000);
                     potionSpeedChange(-1);
                 }

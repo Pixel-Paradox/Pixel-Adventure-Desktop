@@ -7,32 +7,39 @@ const diedTopaze = document.querySelector(".diedTopaze");
 const diedTopazeTxt = document.querySelector(".diedTopazeTxt");
 const reprendreDied = document.querySelector(".reprendreDied");
 
+const bgHeartLess = document.querySelector(".bgHeartLess");
+
 let heartMax = 3;
 
 let heart = heartMax;
 
-let couldown = 0;
+let invincible = false
 
 function heartChange(heartLess) {
-    let currentTime = Date.now();
 
-    if (playerSpeed === 3) {
+    if (invincible) {
         if (heartLess < 0) {
             heartLess = 0;
         }
     } else {
         if (heartLess < 0) {
-            if (currentTime - couldown >= 2000) {
+            bgHeartLess.classList.add("active");
 
-                couldown = currentTime;
+            setTimeout(function() {
+                bgHeartLess.classList.remove("active");
+            }, 500);
 
-                //player.image = player.sprites.up;
+            heart += heartLess;
 
-                heart += heartLess;
+            if (musique) {
+                soundDamage.play();
+            }
 
-                if (musique) {
-                    soundDamage.play();
-                }
+            if(heart ==! 0) {
+                invincible = true;
+                setTimeout(function() {
+                    invincible = false;
+                }, 2500);
             }
         } else {
             heart += heartLess;
@@ -64,10 +71,15 @@ function potionHeartChange(PotionHeartLess) {
 
 let diedReprendre = false;
 
-reprendreDied.onclick = function() {;
+reprendreDied.onclick = function() {
     died.classList.remove("active");
     body.style.cursor = "none";
     menuKeys = false;
+
+    invincible = true;
+    setTimeout(function() {
+        invincible = false;
+    }, 2500);
 
     if(!diedReprendre) {
         heart = heartMax;

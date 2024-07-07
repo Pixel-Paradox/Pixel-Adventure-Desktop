@@ -37,8 +37,8 @@ dogImage.src = './Site/ImageGame/dog.png';
 const librarianImage = new Image();
 librarianImage.src = './Site/ImageGame/voyageur.png';
 
-const cartographerImage = new Image();
-cartographerImage.src = './Site/ImageGame/voyageur.png';
+const hyldaImage = new Image();
+hyldaImage.src = './Site/ImageGame/voyageur.png';
 
 // Map image
 
@@ -174,7 +174,7 @@ const librarian = {
     }),
 };
 
-const cartographer = {
+const hylda = {
     sprite: new Sprite({
         position: {
             x: canvas.width / 2 - 220,
@@ -183,11 +183,11 @@ const cartographer = {
         frames: {
             max: 4
         },
-        image: cartographerImage
+        image: hyldaImage
     }),
 };
 
-const villagersMap = [ragnerus, dog, voyageur, cartographer];
+const villagersMap = [ragnerus, dog, voyageur, hylda];
 const villagersHome = [vagabond , chef, georas, librarian];
 const villagers = [...villagersMap, ...villagersHome];
 const villagersMovable = villagers.map(villager => villager.sprite);

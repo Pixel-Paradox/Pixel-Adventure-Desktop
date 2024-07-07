@@ -29,6 +29,30 @@ canvas {
 
 }
 
+.bgHeartLess {
+
+    background-color: red;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); 
+    opacity: 0;
+    visibility: hidden;
+    transition: 1.5s;
+
+}
+
+.bgHeartLess.active {
+
+    opacity: 0.2;
+    visibility: visible;
+    transition: 0s;
+
+}
+
 /*-----Scroll bar pour webkit-----*/
 
 ::-webkit-scrollbar {
