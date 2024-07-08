@@ -675,11 +675,10 @@ window.addEventListener("keydown", function(e) {
             if(!menuKeys){
                 if(PotionSpeed > 0 && playerSpeed === 2) {
                     playerSpeed = 3;
-                    invincible = true;
                     setTimeout(function() {
                         playerSpeed = 2;
-                        invincible = false;
                     }, 10000);
+                    invincibleMan(10000);
                     potionSpeedChange(-1);
                 }
             }

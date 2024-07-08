@@ -15,6 +15,13 @@ let heart = heartMax;
 
 let invincible = false
 
+function invincibleMan(timeInvincible) {
+    invincible = true;
+    setTimeout(function() {
+        invincible = false;
+    }, timeInvincible);
+}
+
 function heartChange(heartLess) {
 
     if (invincible) {
@@ -35,12 +42,10 @@ function heartChange(heartLess) {
                 soundDamage.play();
             }
 
-            if(heart ==! 0) {
-                invincible = true;
-                setTimeout(function() {
-                    invincible = false;
-                }, 2500);
+            if(heart > 0) {
+                invincibleMan(2500);
             }
+            
         } else {
             heart += heartLess;
 
@@ -76,10 +81,7 @@ reprendreDied.onclick = function() {
     body.style.cursor = "none";
     menuKeys = false;
 
-    invincible = true;
-    setTimeout(function() {
-        invincible = false;
-    }, 2500);
+    invincibleMan(2500);
 
     if(!diedReprendre) {
         heart = heartMax;
