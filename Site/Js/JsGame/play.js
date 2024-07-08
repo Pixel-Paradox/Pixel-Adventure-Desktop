@@ -52,27 +52,29 @@ function animate() {
 
     let moving = true;
 
-    enemies1.forEach((enemy) => {
-        const direction = Math.floor(nbEnemiesPassed / enemy.range) % 2 === 0 ? 1 : -1;
-        const distance = (nbEnemiesPassed % enemy.range) * direction;
-        const speed = enemy.speed * (20 / enemy.range);
+    if(!menuKeys) {
+        enemies1.forEach((enemy) => {
+            const direction = Math.floor(nbEnemiesPassed / enemy.range) % 2 === 0 ? 1 : -1;
+            const distance = (nbEnemiesPassed % enemy.range) * direction;
+            const speed = enemy.speed * (20 / enemy.range);
 
-        if (enemy.xy === "x") {
-            enemy.sprite.position.x += speed * distance;
-        } else if (enemy.xy === "y") {
-            enemy.sprite.position.y += speed * distance;
-        }
+            if (enemy.xy === "x") {
+                enemy.sprite.position.x += speed * distance;
+            } else if (enemy.xy === "y") {
+                enemy.sprite.position.y += speed * distance;
+            }
 
-        if (direction > 0) {
-            enemy.sprite.image = enemy.sprite.sprites.up;
-        } else {
-            enemy.sprite.image = enemy.sprite.sprites.down;
-        }
-        
-        enemy.sprite.movingEnemy = true;
-        
-        nbEnemiesPassed++;
-    });
+            if (direction > 0) {
+                enemy.sprite.image = enemy.sprite.sprites.up;
+            } else {
+                enemy.sprite.image = enemy.sprite.sprites.down;
+            }
+            
+            enemy.sprite.movingEnemy = true;
+            
+            nbEnemiesPassed++;
+        });
+    }
 
     if(heart <= 0) {
         diedReprendre = false;
@@ -129,19 +131,21 @@ function animate() {
             frontOfHome.draw()
         });
 
-        enemiesMap.forEach(enemy => {
-            if (
-                rectangularCollision({
-                    rectangle1: player,
-                    rectangle2: {...enemy.sprite, position: {
-                        x: enemy.sprite.position.x,
-                        y: enemy.sprite.position.y
-                    }}
-                })
-            ) {
-                heartChange(-1)
-            }
-        });
+        if(!menuKeys) {
+            enemiesMap.forEach(enemy => {
+                if (
+                    rectangularCollision({
+                        rectangle1: player,
+                        rectangle2: {...enemy.sprite, position: {
+                            x: enemy.sprite.position.x,
+                            y: enemy.sprite.position.y
+                        }}
+                    })
+                ) {
+                    heartChange(-1)
+                }
+            });
+        }
         
         if(!menuKeys && !carteKeys) {
             if (keys.w.pressed && lastKey === "w") {

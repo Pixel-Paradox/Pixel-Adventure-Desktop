@@ -79,7 +79,7 @@ function keydialogue(villager) {
 
             // Vagabond 1 dialogue
 
-            dialogueFunction("Le vagabond", "Hé, vous là-bas. Vous vous êtes réveillé, approchez un peu plus. Tu ne sais pas ce qu'il s'est passé... Tu ne connais pas la vérité... je ne peux pas trop en dire... trouverez-vous par vous-même la vérité que vous cherchez... maintenant je dois partir.");
+            dialogueFunction("Le vagabond", "Hé, vous là-bas. Vous vous êtes réveillé, approchez un peu plus. Tu ne sais pas ce qu'il s'est passé... Tu ne connais pas la vérité... je ne peux pas trop en dire... trouvez par vous-même la vérité que vous cherchez... maintenant je dois partir.");
     
             if(vagabondDialogue === 0) {
                 setTimeout(function() {
