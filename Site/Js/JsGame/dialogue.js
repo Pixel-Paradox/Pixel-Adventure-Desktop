@@ -2,6 +2,8 @@ const dialogue = document.querySelector(".dialogue");
 const text = document.querySelector(".text");
 const username = document.querySelector(".name");
 
+
+
 let vagabondDialogueNb = 0;
 let vagabondDialogue = 0;
 
@@ -19,6 +21,11 @@ let voyageurDialogue = 0;
 
 let georasDialogueNb = 0;
 let georasDialogue = 0;
+
+let hyldaDialogueNb = 0;
+let hyldaDialogue = 0;
+
+
 
 let timeoutVillager;
 let currentSegment = 0;
@@ -85,7 +92,7 @@ function keydialogue(villager) {
                 setTimeout(function() {
                     vagabond.sprite.position.y -= 100;
                     vagabond.sprite.position.x -= 1550;
-                    progressChange(25);
+                    progressChange(8);
                     vagabondDialogueNb = 1;
                 }, 20000);
             }
@@ -181,7 +188,6 @@ function keydialogue(villager) {
 
                     if(voyageurDialogue === 0) {
                         progressChange(8);
-                        carte.innerHTML += carteMap;
                         chefDialogueNb = 1;
                     }
 
@@ -312,6 +318,44 @@ function keydialogue(villager) {
             } else {
                 dialogueFunction("Maitre du jeu", "Veuillez d'abord parler a Ragnerus.");
             }  
+        }
+
+
+        // Quete secondaire
+
+        // Hylda
+      
+        if (villager === hylda) {
+            if(hyldaDialogueNb === 0) {
+
+                // Hylda 1 dialogue
+
+                dialogueFunction("Hylda", "Bonjour Mon prénom est Hyda je suis une habitante d'Amarantis et la fille du chef. Ma maison est au Nord-Est de celle de mon père travail mais j'ai un problème je voudrais aller à la bibliothèque pour lire un article sur l'histoire du village d'Amarantis mais je suis interdit d'y enter car j'ai loué des livre que je n'ai pas pu rendre parce que je l'ai ai perdu. Tu pourrais allé à la bibliothèque lire article et me dire ce qu'il y a dessus. Je pourrais de donner une petite récompense je suis cartographe.");
+
+                if(hyldaDialogue === 0) {
+                    //changer dialogue article
+                    progressChange(8);
+                }
+
+                hyldaDialogue = 1;
+
+            } else
+
+            if(hyldaDialogueNb === 1) {
+
+                // Hylda 2 dialogue
+
+                dialogueFunction("Hylda", "");
+
+                if(hyldaDialogue === 1) {
+                    carte.innerHTML += carteMap;
+                    topazeChange(3);
+                    progressChange(9);
+                }
+
+                hyldaDialogue = 2;
+
+            }
         }
         
         

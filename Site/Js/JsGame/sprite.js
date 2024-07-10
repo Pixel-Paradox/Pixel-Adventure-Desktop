@@ -177,8 +177,8 @@ const librarian = {
 const hylda = {
     sprite: new Sprite({
         position: {
-            x: canvas.width / 2 - 220,
-            y: canvas.height / 2 + 720
+            x: canvas.width / 2 + 120,
+            y: canvas.height / 2 + 1050
         },
         frames: {
             max: 4

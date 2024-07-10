@@ -24,9 +24,9 @@ const keys = {
 
 let carteKeys = false;
 
-let base = "home";
+let base = "map";
 
-let nbEnemiesPassed = 0
+let nbEnemiesPassed = 0;
 
 function animate() {
     window.requestAnimationFrame(animate);
