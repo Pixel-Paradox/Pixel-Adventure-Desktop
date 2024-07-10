@@ -24,7 +24,7 @@ const keys = {
 
 let carteKeys = false;
 
-let base = "map";
+let base = "home";
 
 let nbEnemiesPassed = 0;
 
