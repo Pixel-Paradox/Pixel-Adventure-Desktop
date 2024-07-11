@@ -37,10 +37,6 @@ function animate() {
     nbTopaze.textContent = topaze;
     
     if(menuKeys) {
-        carte.classList.remove("active");
-        
-        carteKeys = false;
-
         villagers.forEach(villager => {
             villager.sprite.movingVillager = false;
         })
@@ -390,6 +386,12 @@ function animate() {
         }
     } else
     
+
+
+
+
+
+
     if(base === "home") {
 
         if (musique) {
@@ -463,7 +465,7 @@ function animate() {
                             }}
                         })
                     ) {
-
+                        //villager.sprite.image = villager.sprite.sprites.down;
                         keydialogue(villager);
                     }
                 });
@@ -540,7 +542,7 @@ function animate() {
                             }}
                         })
                     ) {
-
+                        //villager.sprite.image = villager.sprite.sprites.up;
                         keydialogue(villager);
                     }
                 });
@@ -597,6 +599,7 @@ function animate() {
                             }}
                         })
                     ) {
+                        //villager.sprite.image = villager.sprite.sprites.right;
                         keydialogue(villager);
                     }
                 });
@@ -653,6 +656,7 @@ function animate() {
                             }}
                         })
                     ) {
+                        //villager.sprite.image = villager.sprite.sprites.left;
                         keydialogue(villager);
                     }
                 });

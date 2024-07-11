@@ -7,7 +7,7 @@ document.addEventListener("contextmenu", function (event) {
 });
 
 const body = document.querySelector("body");
-const menu = document.querySelector(".menu");
+const bgMenu = document.querySelector(".bgMenu");
 const reprendre = document.querySelector(".reprendre");
 const inputSizes = document.querySelectorAll(".inputSize");
 const musiqueBtn = document.querySelector(".musique");
@@ -18,18 +18,18 @@ let menuKeys = false;
 
 document.addEventListener('keydown', function(event) {
     if (event.keyCode === 81) {
-        menu.classList.toggle("active");
+        bgMenu.classList.toggle("active");
         
-        menuKeys = menu.classList.contains('active');
+        menuKeys = bgMenu.classList.contains('active');
 
-        body.style.cursor = menu.classList.contains('active') ? "default" : "none";
+        body.style.cursor = bgMenu.classList.contains('active') ? "default" : "none";
     } 
 });
 
 reprendre.onclick = function() {
-    menu.classList.remove("active");
+    bgMenu.classList.remove("active");
     body.style.cursor = "none";
-    menuKeys = menu.classList.contains('active');
+    menuKeys = bgMenu.classList.contains('active');
 };
 
 inputSizes.forEach((input, index) => {

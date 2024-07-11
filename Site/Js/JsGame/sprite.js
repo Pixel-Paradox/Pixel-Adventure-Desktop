@@ -1,21 +1,35 @@
 // Player image
 
 const player1 = new Image();
-player1.src = './Site/ImageGame/player1.png';
+player1.src = './Site/ImageGame/Sprites/player1.png';
 
 const player2 = new Image();
-player2.src = './Site/ImageGame/player2.png';
+player2.src = './Site/ImageGame/Sprites/player2.png';
 
 const player3 = new Image();
-player3.src = './Site/ImageGame/player3.png';
+player3.src = './Site/ImageGame/Sprites/player3.png';
 
 const player4 = new Image();
-player4.src = './Site/ImageGame/player4.png';
+player4.src = './Site/ImageGame/Sprites/player4.png';
 
 // Villager image
 
-const vagabondImage = new Image();
-vagabondImage.src = './Site/ImageGame/vagabond.png';
+// Vagabond image
+
+const vagabondImage1 = new Image();
+vagabondImage1.src = './Site/ImageGame/Sprites/vagabond1.png';
+
+const vagabondImage2 = new Image();
+vagabondImage2.src = './Site/ImageGame/Sprites/vagabond2.png';
+
+const vagabondImage3 = new Image();
+vagabondImage3.src = './Site/ImageGame/Sprites/vagabond3.png';
+
+const vagabondImage4 = new Image();
+vagabondImage4.src = './Site/ImageGame/Sprites/vagabond4.png';
+
+
+
 
 const chefImage = new Image();
 chefImage.src = './Site/ImageGame/chef.png';
@@ -24,7 +38,7 @@ const voyageurImage = new Image();
 voyageurImage.src = './Site/ImageGame/voyageur.png';
 
 const georasImage = new Image();
-georasImage.src = './Site/ImageGame/voyageur.png';
+georasImage.src = './Site/ImageGame/georas.png';
 
 // Quete secondaire
 
@@ -40,6 +54,9 @@ librarianImage.src = './Site/ImageGame/voyageur.png';
 const hyldaImage = new Image();
 hyldaImage.src = './Site/ImageGame/voyageur.png';
 
+const buchQueteImage = new Image();
+buchQueteImage.src = './Site/ImageGame/voyageur.png';
+
 // Map image
 
 const mapBackground = new Image();
@@ -48,7 +65,7 @@ mapBackground.src = './Site/ImageGame/map.png';
 const mapForeground = new Image();
 mapForeground.src = './Site/ImageGame/mapForeground.png';
 
-// Houses image 
+// Home image 
 
 const homeBackground = new Image();
 homeBackground.src = './Site/ImageGame/home.png';
@@ -71,9 +88,7 @@ const player = new Sprite({
         up: player2,
         down: player1,
         left: player4,
-        right: player3,
-        negHeart: player1,
-        posHeart: player2
+        right: player3
     }
 })
 
@@ -82,13 +97,19 @@ const player = new Sprite({
 const vagabond = {
     sprite: new Sprite({
         position: {
-            x: canvas.width / 2 + 35,
-            y: canvas.height / 2 - 25
+            x: canvas.width / 2 + 40,
+            y: canvas.height / 2 + 40
         },
         frames: {
             max: 4
         },
-        image: vagabondImage
+        image: vagabondImage4,
+        sprites: {
+            up: vagabondImage2,
+            down: vagabondImage1,
+            left: vagabondImage4,
+            right: vagabondImage3
+        }
     }),
 };
 
@@ -187,7 +208,36 @@ const hylda = {
     }),
 };
 
-const villagersMap = [ragnerus, dog, voyageur, hylda];
+const buchImage = new Image();
+buchImage.src = './Site/ImageGame/Sprites/player4.png';
+
+    const buch1 = {
+        sprite: new Sprite({
+            position: {
+                x: canvas.width / 2 + 4,
+                y: canvas.height / 2 + 4
+            },
+            frames: {
+                max: 4
+            },
+            image: buchImage
+        })
+    };
+
+    const buch2 = {
+        sprite: new Sprite({
+            position: {
+                x: canvas.width / 2 + 10,
+                y: canvas.height / 2 + 10
+            },
+            frames: {
+                max: 4
+            },
+            image: buchImage
+        })
+    };
+
+const villagersMap = [ragnerus, dog, voyageur, hylda, ];
 const villagersHome = [vagabond , chef, georas, librarian];
 const villagers = [...villagersMap, ...villagersHome];
 const villagersMovable = villagers.map(villager => villager.sprite);
@@ -195,12 +245,12 @@ const villagersMovable = villagers.map(villager => villager.sprite);
 // Enemies creation
 
 const enemyImages = [
-    ["./Site/ImageGame/goat3.png", "./Site/ImageGame/goat4.png"],
-    ["./Site/ImageGame/goat1.png", "./Site/ImageGame/goat2.png"],
-    ["./Site/ImageGame/goat3.png", "./Site/ImageGame/goat4.png"],
-    ["./Site/ImageGame/goat3.png", "./Site/ImageGame/goat4.png"],
-    ["./Site/ImageGame/goat1.png", "./Site/ImageGame/goat2.png"],
-    ["./Site/ImageGame/goat1.png", "./Site/ImageGame/goat2.png"]
+    ["./Site/ImageGame/Sprites/goat3.png", "./Site/ImageGame/Sprites/goat4.png"],
+    ["./Site/ImageGame/Sprites/goat1.png", "./Site/ImageGame/Sprites/goat2.png"],
+    ["./Site/ImageGame/Sprites/goat3.png", "./Site/ImageGame/Sprites/goat4.png"],
+    ["./Site/ImageGame/Sprites/goat3.png", "./Site/ImageGame/Sprites/goat4.png"],
+    ["./Site/ImageGame/Sprites/goat1.png", "./Site/ImageGame/Sprites/goat2.png"],
+    ["./Site/ImageGame/Sprites/goat1.png", "./Site/ImageGame/Sprites/goat2.png"]
 ];
 
 const enemyPositions = [
@@ -231,9 +281,14 @@ for (let i = 0; i < enemyPositions.length; i++) {
                 x: canvas.width / 2 + enemyPositions[i].x,
                 y: canvas.height / 2 + enemyPositions[i].y
             },
+            frames: { 
+                max: 4 
+            },
             image: image1,
-            frames: { max: 4 },
-            sprites: { up: image1, down: image2 },
+            sprites: { 
+                up: image1, 
+                down: image2 
+            },
         }),
         speed: enemySpeeds[i],
         range: enemyRanges[i],

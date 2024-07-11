@@ -1,3 +1,26 @@
+.bgMenu {
+
+    height: 100vh;
+    width: 100vw;
+    backdrop-filter: blur(10px);
+    z-index: 4000;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: 2s; 
+    visibility: hidden;
+    opacity: 0;
+
+}
+
+.bgMenu.active {
+
+    visibility: visible; 
+    opacity: 1;
+
+}
+
 .menu {
     
     display: flex;
@@ -8,20 +31,10 @@
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 3000;
-    visibility: hidden;
-    opacity: 0;
-    transition: 2s; 
     text-align: center;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 40px;
-
-}
-
-.menu.active {
-
-    visibility: visible; 
-    opacity: 1;
 
 }
 
@@ -44,13 +57,13 @@
 
 }
 
-.menu.active .btn {
+.bgMenu.active .btn {
 
     cursor: pointer;
     
 }
 
-.menu.active .touche {
+.bgMenu.active .touche {
 
     cursor: default;
     
