@@ -25,6 +25,12 @@ let georasDialogue = 0;
 let hyldaDialogueNb = 0;
 let hyldaDialogue = 0;
 
+let book1DialogueNb = 0;
+let book1Dialogue = 0;
+
+let book2DialogueNb = 0;
+let book2Dialogue = 0;
+
 
 
 let timeoutVillager;
@@ -318,7 +324,7 @@ function keydialogue(villager) {
             } else {
                 dialogueFunction("Maitre du jeu", "Veuillez d'abord parler a Ragnerus.");
             }  
-        }
+        } else
 
 
         // Quete secondaire
@@ -354,6 +360,22 @@ function keydialogue(villager) {
                 }
 
                 hyldaDialogue = 2;
+
+            }
+        } else
+
+        if (villager === book1) {
+            if(book1DialogueNb === 0) {
+
+                dialogueFunction("Livre test1", "Test Test");
+
+            }
+        } else
+
+        if (villager === book2) {
+            if(book2DialogueNb === 0) {
+
+                dialogueFunction("Livre test2", "Test TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest TestTest Test");
 
             }
         }

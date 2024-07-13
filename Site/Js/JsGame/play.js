@@ -105,7 +105,8 @@ function animate() {
         c.clearRect(0, 0, canvas.width, canvas.height);
 
         backgroundMap.draw();
-        player.draw();
+        
+        player.sprite.draw();
 
         villagersMap.forEach(villager => {
             villager.sprite.draw();
@@ -117,7 +118,7 @@ function animate() {
 
         foregroundMap.draw();
 
-        player.moving = false;
+        player.sprite.moving = false;
 
         mapOfCollisions.forEach(mapOfCollision => {
             mapOfCollision.draw()
@@ -131,7 +132,7 @@ function animate() {
             enemiesMap.forEach(enemy => {
                 if (
                     rectangularCollision({
-                        rectangle1: player,
+                        rectangle1: player.sprite,
                         rectangle2: {...enemy.sprite, position: {
                             x: enemy.sprite.position.x,
                             y: enemy.sprite.position.y
@@ -146,8 +147,8 @@ function animate() {
         if(!menuKeys && !carteKeys) {
             if (keys.w.pressed && lastKey === "w") {
 
-                player.moving = true;
-                player.image = player.sprites.up;
+                player.sprite.moving = true;
+                player.sprite.image = player.sprite.sprites.up;
 
                 // Collision
 
@@ -156,14 +157,14 @@ function animate() {
                         const boundary = mapOfCollisions[i];
                         if(
                             rectangularCollision({
-                                rectangle1: player,
+                                rectangle1: player.sprite,
                                 rectangle2: {...boundary, position: {
                                     x: boundary.position.x,
                                     y: boundary.position.y + 2
                                 }}
                             }) ||
                             rectangularCollision({
-                                rectangle1: player,
+                                rectangle1: player.sprite,
                                 rectangle2: {...spriteCollisionsMap.sprite, position: {
                                     x: spriteCollisionsMap.sprite.position.x,
                                     y: spriteCollisionsMap.sprite.position.y + 2
@@ -171,7 +172,7 @@ function animate() {
                             })
                         ){
                             moving = false;
-                            player.moving = false;
+                            player.sprite.moving = false;
                             break;
                         }
                     }
@@ -183,7 +184,7 @@ function animate() {
                 villagersMap.forEach(villager => {
                     if (
                         rectangularCollision({
-                            rectangle1: player,
+                            rectangle1: player.sprite,
                             rectangle2: {...villager.sprite, position: {
                                 x: villager.sprite.position.x,
                                 y: villager.sprite.position.y + 2
@@ -200,7 +201,7 @@ function animate() {
                     const frontOfHome = frontOfHomes[i];
                     if(
                         rectangularCollision({
-                            rectangle1: player,
+                            rectangle1: player.sprite,
                             rectangle2: {...frontOfHome, position: {
                                 x: frontOfHome.position.x,
                                 y: frontOfHome.position.y + 2
@@ -224,8 +225,8 @@ function animate() {
 
             else if (keys.s.pressed && lastKey === "s") {
 
-                player.moving = true;
-                player.image = player.sprites.down;
+                player.sprite.moving = true;
+                player.sprite.image = player.sprite.sprites.down;
 
                 // Collision
 
@@ -234,14 +235,14 @@ function animate() {
                         const boundary = mapOfCollisions[i];
                         if(
                             rectangularCollision({
-                                rectangle1: player,
+                                rectangle1: player.sprite,
                                 rectangle2: {...boundary, position: {
                                     x: boundary.position.x,
                                     y: boundary.position.y - 2
                                 }}
                             }) ||
                             rectangularCollision({
-                                rectangle1: player,
+                                rectangle1: player.sprite,
                                 rectangle2: {...spriteCollisionsMap.sprite, position: {
                                     x: spriteCollisionsMap.sprite.position.x,
                                     y: spriteCollisionsMap.sprite.position.y - 2
@@ -249,7 +250,7 @@ function animate() {
                             })
                         ){
                             moving = false;
-                            player.moving = false;
+                            player.sprite.moving = false;
                             break;
                         }
                     }
@@ -258,7 +259,7 @@ function animate() {
                 villagersMap.forEach(villager => {
                     if (
                         rectangularCollision({
-                            rectangle1: player,
+                            rectangle1: player.sprite,
                             rectangle2: {...villager.sprite, position: {
                                 x: villager.sprite.position.x,
                                 y: villager.sprite.position.y - 2
@@ -278,8 +279,8 @@ function animate() {
 
             else if (keys.a.pressed && lastKey === "a") {
 
-                player.moving = true;
-                player.image = player.sprites.left;
+                player.sprite.moving = true;
+                player.sprite.image = player.sprite.sprites.left;
 
                 //Collision
 
@@ -288,14 +289,14 @@ function animate() {
                         const boundary = mapOfCollisions[i];
                         if(
                             rectangularCollision({
-                                rectangle1: player,
+                                rectangle1: player.sprite,
                                 rectangle2: {...boundary, position: {
                                     x: boundary.position.x + 2,
                                     y: boundary.position.y
                                 }}
                             }) ||
                             rectangularCollision({
-                                rectangle1: player,
+                                rectangle1: player.sprite,
                                 rectangle2: {...spriteCollisionsMap.sprite, position: {
                                     x: spriteCollisionsMap.sprite.position.x + 2,
                                     y: spriteCollisionsMap.sprite.position.y
@@ -303,7 +304,7 @@ function animate() {
                             })
                         ){
                             moving = false;
-                            player.moving = false;
+                            player.sprite.moving = false;
                             break;
                         }
                     }
@@ -312,7 +313,7 @@ function animate() {
                 villagersMap.forEach(villager => {
                     if (
                         rectangularCollision({
-                            rectangle1: player,
+                            rectangle1: player.sprite,
                             rectangle2: {...villager.sprite, position: {
                                 x: villager.sprite.position.x + 2,
                                 y: villager.sprite.position.y
@@ -332,8 +333,8 @@ function animate() {
 
             else if (keys.d.pressed && lastKey === "d") {
 
-                player.moving = true;
-                player.image = player.sprites.right;
+                player.sprite.moving = true;
+                player.sprite.image = player.sprite.sprites.right;
 
                 // Collision
 
@@ -342,14 +343,14 @@ function animate() {
                         const boundary = mapOfCollisions[i];
                         if(
                             rectangularCollision({
-                                rectangle1: player,
+                                rectangle1: player.sprite,
                                 rectangle2: {...boundary, position: {
                                     x: boundary.position.x - 2,
                                     y: boundary.position.y
                                 }}
                             }) ||
                             rectangularCollision({
-                                rectangle1: player,
+                                rectangle1: player.sprite,
                                 rectangle2: {...spriteCollisionsMap.sprite, position: {
                                     x: spriteCollisionsMap.sprite.position.x - 2,
                                     y: spriteCollisionsMap.sprite.position.y
@@ -357,7 +358,7 @@ function animate() {
                             })
                         ){
                             moving = false;
-                            player.moving = false;
+                            player.sprite.moving = false;
                             break;
                         }
                     }
@@ -366,7 +367,7 @@ function animate() {
                 villagersMap.forEach(villager => {
                     if (
                         rectangularCollision({
-                            rectangle1: player,
+                            rectangle1: player.sprite,
                             rectangle2: {...villager.sprite, position: {
                                 x: villager.sprite.position.x - 2,
                                 y: villager.sprite.position.y
@@ -401,7 +402,7 @@ function animate() {
         c.clearRect(0, 0, canvas.width, canvas.height);
 
         backgroundHome.draw();
-        player.draw();
+        player.sprite.draw();
 
         villagersHome.forEach(villager => {
             villager.sprite.draw();
@@ -409,7 +410,7 @@ function animate() {
 
         foregroundHome.draw();
 
-        player.moving = false;
+        player.sprite.moving = false;
 
         homeOfCollisions.forEach(homeOfCollision => {
             homeOfCollision.draw()
@@ -422,8 +423,8 @@ function animate() {
         if(!menuKeys && !carteKeys) {
             if (keys.w.pressed && lastKey === "w") {
 
-                player.moving = true;
-                player.image = player.sprites.up;
+                player.sprite.moving = true;
+                player.sprite.image = player.sprite.sprites.up;
 
                 // Collision
 
@@ -432,14 +433,14 @@ function animate() {
                         const boundary = homeOfCollisions[i];
                         if(
                             rectangularCollision({
-                                rectangle1: player,
+                                rectangle1: player.sprite,
                                 rectangle2: {...boundary, position: {
                                     x: boundary.position.x,
                                     y: boundary.position.y + 2
                                 }}
                             }) ||
                             rectangularCollision({
-                                rectangle1: player,
+                                rectangle1: player.sprite,
                                 rectangle2: {...spriteCollisionsHome.sprite, position: {
                                     x: spriteCollisionsHome.sprite.position.x,
                                     y: spriteCollisionsHome.sprite.position.y + 2
@@ -447,7 +448,7 @@ function animate() {
                             })
                         ){
                             moving = false;
-                            player.moving = false;
+                            player.sprite.moving = false;
                             break;
                         }
                     }
@@ -458,7 +459,7 @@ function animate() {
                 villagersHome.forEach(villager => {
                     if (
                         rectangularCollision({
-                            rectangle1: player,
+                            rectangle1: player.sprite,
                             rectangle2: {...villager.sprite, position: {
                                 x: villager.sprite.position.x,
                                 y: villager.sprite.position.y + 2
@@ -478,8 +479,8 @@ function animate() {
             }
             else if (keys.s.pressed && lastKey === "s") {
 
-                player.moving = true;
-                player.image = player.sprites.down;
+                player.sprite.moving = true;
+                player.sprite.image = player.sprite.sprites.down;
 
                 // Collision
 
@@ -488,14 +489,14 @@ function animate() {
                         const boundary = homeOfCollisions[i];
                         if(
                             rectangularCollision({
-                                rectangle1: player,
+                                rectangle1: player.sprite,
                                 rectangle2: {...boundary, position: {
                                     x: boundary.position.x,
                                     y: boundary.position.y - 2
                                 }}
                             }) ||
                             rectangularCollision({
-                                rectangle1: player,
+                                rectangle1: player.sprite,
                                 rectangle2: {...spriteCollisionsHome.sprite, position: {
                                     x: spriteCollisionsHome.sprite.position.x,
                                     y: spriteCollisionsHome.sprite.position.y - 2
@@ -503,7 +504,7 @@ function animate() {
                             })
                         ){
                             moving = false;
-                            player.moving = false;
+                            player.sprite.moving = false;
                             break;
                         }
                     }
@@ -515,7 +516,7 @@ function animate() {
                     const frontOfHome = frontOfHomes[i];
                     if(
                         rectangularCollision({
-                            rectangle1: player,
+                            rectangle1: player.sprite,
                             rectangle2: {...frontOfHome, position: {
                                 x: frontOfHome.position.x,
                                 y: frontOfHome.position.y + 2
@@ -535,7 +536,7 @@ function animate() {
                 villagersHome.forEach(villager => {
                     if (
                         rectangularCollision({
-                            rectangle1: player,
+                            rectangle1: player.sprite,
                             rectangle2: {...villager.sprite, position: {
                                 x: villager.sprite.position.x,
                                 y: villager.sprite.position.y - 2
@@ -556,8 +557,8 @@ function animate() {
             
             if (keys.a.pressed && lastKey === "a") {
 
-                player.moving = true;
-                player.image = player.sprites.left;
+                player.sprite.moving = true;
+                player.sprite.image = player.sprite.sprites.left;
 
                 // Collision
 
@@ -566,14 +567,14 @@ function animate() {
                         const boundary = homeOfCollisions[i];
                         if(
                             rectangularCollision({
-                                rectangle1: player,
+                                rectangle1: player.sprite,
                                 rectangle2: {...boundary, position: {
                                     x: boundary.position.x + 2,
                                     y: boundary.position.y
                                 }}
                             }) ||                         
                             rectangularCollision({
-                                rectangle1: player,
+                                rectangle1: player.sprite,
                                 rectangle2: {...villager.sprite, position: {
                                     x: villager.sprite.position.x + 2,
                                     y: villager.sprite.position.y
@@ -581,7 +582,7 @@ function animate() {
                             })
                         ){
                             moving = false;
-                            player.moving = false;
+                            player.sprite.moving = false;
                             break;
                         }
                     }
@@ -592,7 +593,7 @@ function animate() {
                 villagersHome.forEach(villager => {
                     if (
                         rectangularCollision({
-                            rectangle1: player,
+                            rectangle1: player.sprite,
                             rectangle2: {...villager.sprite, position: {
                                 x: villager.sprite.position.x + 2,
                                 y: villager.sprite.position.y
@@ -613,8 +614,8 @@ function animate() {
             
             if (keys.d.pressed && lastKey === "d") {
 
-                player.moving = true;
-                player.image = player.sprites.right;
+                player.sprite.moving = true;
+                player.sprite.image = player.sprite.sprites.right;
 
                 // Collision
 
@@ -623,14 +624,14 @@ function animate() {
                         const boundary = homeOfCollisions[i];
                         if(
                             rectangularCollision({
-                                rectangle1: player,
+                                rectangle1: player.sprite,
                                 rectangle2: {...boundary, position: {
                                     x: boundary.position.x - 2,
                                     y: boundary.position.y
                                 }}
                             }) ||                         
                             rectangularCollision({
-                                rectangle1: player,
+                                rectangle1: player.sprite,
                                 rectangle2: {...villager.sprite, position: {
                                     x: villager.sprite.position.x - 2,
                                     y: villager.sprite.position.y
@@ -638,7 +639,7 @@ function animate() {
                             })
                         ){
                             moving = false;
-                            player.moving = false;
+                            player.sprite.moving = false;
                             break;
                         }
                     }
@@ -649,7 +650,7 @@ function animate() {
                 villagersHome.forEach(villager => {
                     if (
                         rectangularCollision({
-                            rectangle1: player,
+                            rectangle1: player.sprite,
                             rectangle2: {...villager.sprite, position: {
                                 x: villager.sprite.position.x - 2,
                                 y: villager.sprite.position.y

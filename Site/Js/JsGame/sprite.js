@@ -1,249 +1,110 @@
-// Player image
-
-const player1 = new Image();
-player1.src = './Site/ImageGame/Sprites/player1.png';
-
-const player2 = new Image();
-player2.src = './Site/ImageGame/Sprites/player2.png';
-
-const player3 = new Image();
-player3.src = './Site/ImageGame/Sprites/player3.png';
-
-const player4 = new Image();
-player4.src = './Site/ImageGame/Sprites/player4.png';
-
-// Villager image
-
-// Vagabond image
-
-const vagabondImage1 = new Image();
-vagabondImage1.src = './Site/ImageGame/Sprites/vagabond1.png';
-
-const vagabondImage2 = new Image();
-vagabondImage2.src = './Site/ImageGame/Sprites/vagabond2.png';
-
-const vagabondImage3 = new Image();
-vagabondImage3.src = './Site/ImageGame/Sprites/vagabond3.png';
-
-const vagabondImage4 = new Image();
-vagabondImage4.src = './Site/ImageGame/Sprites/vagabond4.png';
-
-
-
-
-const chefImage = new Image();
-chefImage.src = './Site/ImageGame/chef.png';
-
-const voyageurImage = new Image();
-voyageurImage.src = './Site/ImageGame/voyageur.png';
-
-const georasImage = new Image();
-georasImage.src = './Site/ImageGame/georas.png';
-
-// Quete secondaire
-
-const ragnerusImage = new Image();
-ragnerusImage.src = './Site/ImageGame/ragnerus.png';
-
-const dogImage = new Image();
-dogImage.src = './Site/ImageGame/dog.png';
-
-const librarianImage = new Image();
-librarianImage.src = './Site/ImageGame/voyageur.png';
-
-const hyldaImage = new Image();
-hyldaImage.src = './Site/ImageGame/voyageur.png';
-
-const buchQueteImage = new Image();
-buchQueteImage.src = './Site/ImageGame/voyageur.png';
-
-// Map image
-
-const mapBackground = new Image();
-mapBackground.src = './Site/ImageGame/map.png';
-
-const mapForeground = new Image();
-mapForeground.src = './Site/ImageGame/mapForeground.png';
-
-// Home image 
-
-const homeBackground = new Image();
-homeBackground.src = './Site/ImageGame/home.png';
-
-const homeForeground = new Image();
-homeForeground.src = './Site/ImageGame/homeForeground.png';
-
-// Player creation
-
-const player = new Sprite({
-    position: {
-        x: canvas.width / 2 - 10,
-        y: canvas.height / 2 - 16.1
-    },
-    image: player1,
-    frames: {
-        max: 4
-    },
-    sprites: {
-        up: player2,
-        down: player1,
-        left: player4,
-        right: player3
-    }
-})
-
-// Villager creation
-
-const vagabond = {
-    sprite: new Sprite({
-        position: {
-            x: canvas.width / 2 + 40,
-            y: canvas.height / 2 + 40
-        },
-        frames: {
-            max: 4
-        },
-        image: vagabondImage4,
-        sprites: {
-            up: vagabondImage2,
-            down: vagabondImage1,
-            left: vagabondImage4,
-            right: vagabondImage3
-        }
-    }),
-};
-
-const chef = {
-    sprite: new Sprite({
-        position: {
-            x: canvas.width / 2 + 155,
-            y: canvas.height / 2 + 390
-        },
-        frames: {
-            max: 4
-        },
-        image: chefImage
-    }),
-};
-
-const georas = {
-    sprite: new Sprite({
-        position: {
-            x: canvas.width / 2 - 250,
-            y: canvas.height / 2 + 950
-        },
-        frames: {
-            max: 4
-        },
-        image: georasImage
-    }),
-};
-
-
-
-
-
-const ragnerus = {
-    sprite: new Sprite({
-        position: {
-            x: canvas.width / 2 + 195,
-            y: canvas.height / 2 + 195
-        },
-        frames: {
-            max: 4
-        },
-        image: ragnerusImage
-    }),
-};
-
-const dog = {
-    sprite: new Sprite({
-        position: {
-            x: canvas.width / 2 - 5,
-            y: canvas.height / 2 - 710
-        },
-        frames: {
-            max: 4
-        },
-        image: dogImage
-    }),
-};
-
-const voyageur = {
-    sprite: new Sprite({
-        position: {
-            x: canvas.width / 2 - 200,
-            y: canvas.height / 2 + 750
-        },
-        frames: {
-            max: 4
-        },
-        image: voyageurImage
-    }),
-};
-
-const librarian = {
-    sprite: new Sprite({
-        position: {
-            x: canvas.width / 2 - 250,
-            y: canvas.height / 2 + 700
-        },
-        frames: {
-            max: 4
-        },
-        image: librarianImage
-    }),
-};
-
-const hylda = {
-    sprite: new Sprite({
-        position: {
-            x: canvas.width / 2 + 120,
-            y: canvas.height / 2 + 1050
-        },
-        frames: {
-            max: 4
-        },
-        image: hyldaImage
-    }),
-};
-
-const buchImage = new Image();
-buchImage.src = './Site/ImageGame/Sprites/player4.png';
-
-    const buch1 = {
+function createVillagerTest(path1, path2, path3, path4, path5, x, y) {
+    const villagerTestImage1 = new Image();
+    villagerTestImage1.src = path1;
+    const villagerTestImage2 = new Image();
+    villagerTestImage2.src = path2;
+    const villagerTestImage3 = new Image();
+    villagerTestImage3.src = path3;
+    const villagerTestImage4 = new Image();
+    villagerTestImage4.src = path4;
+    const villagerTestImage5 = new Image();
+    villagerTestImage5.src = path5;
+    
+    return {
         sprite: new Sprite({
             position: {
-                x: canvas.width / 2 + 4,
-                y: canvas.height / 2 + 4
+                x: canvas.width / 2 + x,
+                y: canvas.height / 2 + y
             },
             frames: {
                 max: 4
             },
-            image: buchImage
+            image: villagerTestImage5,
+            sprites: {
+                up: villagerTestImage2,
+                down: villagerTestImage1,
+                left: villagerTestImage4,
+                right: villagerTestImage3
+            }
         })
     };
+}
 
-    const buch2 = {
+// Player
+
+const player = createVillagerTest('./Site/ImageGame/Sprites/player1.png', './Site/ImageGame/Sprites/player2.png', './Site/ImageGame/Sprites/player3.png', './Site/ImageGame/Sprites/player4.png', './Site/ImageGame/Sprites/player1.png', -10, -16.1);
+
+// Villageois principale
+
+const vagabond = createVillagerTest('./Site/ImageGame/Sprites/vagabond1.png', './Site/ImageGame/Sprites/vagabond2.png', './Site/ImageGame/Sprites/vagabond3.png', './Site/ImageGame/Sprites/vagabond4.png', './Site/ImageGame/Sprites/vagabond4.png', +40, +40);
+
+
+
+function createVillager(path, x, y) {
+    const villagerImage = new Image();
+    villagerImage.src = path;
+    
+    return {
         sprite: new Sprite({
             position: {
-                x: canvas.width / 2 + 10,
-                y: canvas.height / 2 + 10
+                x: canvas.width / 2 + x,
+                y: canvas.height / 2 + y
             },
             frames: {
                 max: 4
             },
-            image: buchImage
+            image: villagerImage
         })
     };
+}
 
-const villagersMap = [ragnerus, dog, voyageur, hylda, ];
-const villagersHome = [vagabond , chef, georas, librarian];
+// Villageois principale
+
+const chef = createVillager('./Site/ImageGame/chef.png', +155, +390);
+const voyageur = createVillager('./Site/ImageGame/voyageur.png', -200, +750);
+const georas = createVillager('./Site/ImageGame/georas.png', -250, +950);
+
+// Villageois secondaire
+
+const ragnerus = createVillager('./Site/ImageGame/ragnerus.png', +195, +195);
+const dog = createVillager('./Site/ImageGame/dog.png', -5, -710);
+const hylda = createVillager('./Site/ImageGame/voyageur.png', +120, +1050);
+const librarian = createVillager('./Site/ImageGame/voyageur.png', +120, +1050);
+
+
+
+
+function createBook(x, y) {
+    const bookImage = new Image();
+    bookImage.src = './Site/ImageGame/Sprites/book.png';
+    
+    return {
+        sprite: new Sprite({
+            position: {
+                x: canvas.width / 2 + x,
+                y: canvas.height / 2 + y
+            },
+            frames: {
+                max: 4
+            },
+            image: bookImage
+        })
+    };
+}
+
+const book1 = createBook(+50, +10);
+const book2 = createBook(+ 90, +70);
+
+
+
+
+
+let villagersMap = [ragnerus, dog, voyageur, hylda, book2];
+let villagersHome = [vagabond , chef, georas, librarian, book1,];
 const villagers = [...villagersMap, ...villagersHome];
 const villagersMovable = villagers.map(villager => villager.sprite);
 
 // Enemies creation
-
 const enemyImages = [
     ["./Site/ImageGame/Sprites/goat3.png", "./Site/ImageGame/Sprites/goat4.png"],
     ["./Site/ImageGame/Sprites/goat1.png", "./Site/ImageGame/Sprites/goat2.png"],
@@ -268,18 +129,18 @@ const enemyXY = ["x", "y", "x", "x", "y", "y"];
 
 const enemies1 = [];
 
-for (let i = 0; i < enemyPositions.length; i++) {
-    const [image1, image2] = enemyImages[i].map(src => {
+function createEnemy(position, images, speed, range, xy) {
+    const [image1, image2] = images.map(src => {
         const img = new Image();
         img.src = src;
         return img;
     });
 
-    const enemy1 = {
+    return {
         sprite: new Sprite({
             position: {
-                x: canvas.width / 2 + enemyPositions[i].x,
-                y: canvas.height / 2 + enemyPositions[i].y
+                x: canvas.width / 2 + position.x,
+                y: canvas.height / 2 + position.y
             },
             frames: { 
                 max: 4 
@@ -290,60 +151,49 @@ for (let i = 0; i < enemyPositions.length; i++) {
                 down: image2 
             },
         }),
-        speed: enemySpeeds[i],
-        range: enemyRanges[i],
-        xy: enemyXY[i]
+        speed: speed,
+        range: range,
+        xy: xy
     };
-
-    enemies1.push(enemy1);
 }
 
-const enemiesMap = [...enemies1];
+for (let i = 0; i < enemyPositions.length; i++) {
+    const enemy = createEnemy(enemyPositions[i], enemyImages[i], enemySpeeds[i], enemyRanges[i], enemyXY[i]);
+    enemies1.push(enemy);
+}
+
+
+
+let enemiesMap = [...enemies1];
 const enemies = [...enemiesMap];
 const enemiesMovable = enemies.map(enemy => enemy.sprite);
-
-
-
 
 
 const spritesCollisionsMap = [...enemiesMap, ...villagersMap];
 const spritesCollisionsHome = [...villagersHome];
 
-// Map creation
 
-const backgroundMap = new Sprite({
-    position: {
-        x: offset.x,
-        y: offset.y
-    },
-    image: mapBackground
-})
 
-const foregroundMap = new Sprite({
-    position: {
-        x: offset.x,
-        y: offset.y
-    },
-    image: mapForeground
-})
+function createBg(path) {
+    const bgImage = new Image();
+    bgImage.src = path;
+    
+    return new Sprite ({
+        position: {
+            x: offset.x,
+            y: offset.y
+        },
+        image: bgImage
+    });
+}
 
-// Home creation
+// Background
 
-const backgroundHome = new Sprite({
-    position: {
-        x: offset.x,
-        y: offset.y
-    },
-    image: homeBackground
-})
+const backgroundMap = createBg('./Site/ImageGame/map.png');
+const foregroundMap = createBg('./Site/ImageGame/mapForeground.png');
+const backgroundHome = createBg('./Site/ImageGame/home.png');
+const foregroundHome = createBg('./Site/ImageGame/homeForeground.png');
 
-const foregroundHome = new Sprite({
-    position: {
-        x: offset.x,
-        y: offset.y
-    },
-    image: homeForeground
-})
 
 const movable = [backgroundMap , foregroundMap, ...mapOfCollisions,
     ...frontOfHomes, ...villagersMovable, ...enemiesMovable,
